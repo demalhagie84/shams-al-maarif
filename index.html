@@ -175,17 +175,91 @@ footer{border-top:1px solid #f2a93b22;padding:22px;font-family:var(--mono);font-
 ::-webkit-scrollbar{width:11px}::-webkit-scrollbar-track{background:#0a0704}
 ::-webkit-scrollbar-thumb{background:#f2a93b44;border-radius:6px;border:2px solid #0a0704}
 ::-webkit-scrollbar-thumb:hover{background:#f2a93b88}
+/* ═══ chambers · mansions wheel ═══ */
+.wheelwrap{position:relative;width:min(540px,92vw);aspect-ratio:1;margin:10px auto 0}
+.wheelwrap .rim{position:absolute;inset:6%;border:1px solid #f2a93b33;border-radius:50%}
+.wheelwrap .rim2{position:absolute;inset:16%;border:1px dashed #f2a93b22;border-radius:50%}
+.bead{position:absolute;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;
+ border:1px solid #ffffff26;background:#120c05;transition:.3s var(--ease);z-index:2}
+.bead .bg{font-family:var(--ar);font-size:19px;line-height:1;color:var(--cream)}
+.bead .bn{font-family:var(--mono);font-size:8px;color:var(--faint);margin-top:1px}
+.bead:hover{transform:scale(1.14)}
+.bead.fire{border-color:#f2a93b66}.bead.air{border-color:#8fb4dd66}.bead.water{border-color:#5fc9a866}.bead.earth{border-color:#c9a35c66}
+.bead.on{transform:scale(1.22);box-shadow:0 0 22px #f2a93b55;border-color:var(--sun);z-index:3}
+.bead.on .bg{color:var(--sun)}
+.hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:38%;text-align:center;pointer-events:none}
+.hub .ha{font-family:var(--ruqaa);font-size:clamp(17px,3vw,24px);color:var(--sun);direction:rtl;line-height:1.6}
+.hub .he{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:4px}
+.mz-detail{border:1px solid #f2a93b44;background:#00000044;border-radius:3px;padding:16px 18px;margin:18px auto 0;max-width:620px}
+.mz-detail .row{font-family:var(--mono);font-size:12.5px;color:var(--dim);margin-top:6px}
+.mz-detail .row b{color:var(--cream)}
+.mz-detail .big{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.mz-detail .big .l{font-family:var(--ar);font-size:44px;color:var(--sun);line-height:1}
+.mz-detail .big .m{font-family:var(--ar);font-size:26px;color:var(--cream);direction:rtl}
+/* ═══ chambers · the names ═══ */
+.asma-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:7px;direction:rtl;max-width:1060px}
+.achip{border:1px solid #c9a35c33;background:#00000044;border-radius:2px;padding:8px 6px;text-align:center;cursor:pointer;transition:.28s var(--ease)}
+.achip:hover{transform:translateY(-3px);border-color:#f2a93b77}
+.achip.on{border-color:var(--sun);background:#f2a93b12}
+.achip .aa{font-family:var(--ar);font-size:19px;color:var(--cream);line-height:1.4}
+.achip .av{font-family:var(--mono);font-size:10.5px;color:var(--brass);margin-top:2px}
+.achip.head{border-color:#f2a93b88;background:#f2a93b10}
+.achip.head .aa{color:var(--sun);font-size:21px}
+.adetail{border:1px solid #f2a93b44;background:#00000044;border-radius:3px;padding:16px 18px;margin-top:16px;max-width:640px;display:none}
+.adetail.show{display:block}
+.adetail .an{font-family:var(--ar);font-size:34px;color:var(--sun);direction:rtl}
+.adetail .parts{font-family:var(--mono);font-size:12px;color:var(--faint);direction:rtl;margin-top:8px;line-height:2}
+.adetail .row{font-family:var(--mono);font-size:12.5px;color:var(--dim);margin-top:6px}
+/* ═══ chambers · basmala & kursi ═══ */
+.bletters{display:flex;flex-wrap:wrap;gap:6px;direction:rtl;max-width:760px}
+.bletters .bl{min-width:44px;border:1px solid #f2a93b44;background:#00000044;border-radius:2px;padding:8px 6px;text-align:center}
+.bletters .bl .g{font-family:var(--ar);font-size:24px;color:var(--cream);line-height:1.2}
+.bletters .bl .v{font-family:var(--mono);font-size:10.5px;color:var(--brass);margin-top:3px}
+.btotals{font-family:var(--mono);font-size:13px;color:var(--dim);margin-top:16px;line-height:2}
+.btotals b{color:var(--sun);font-size:17px}
+.verse{font-family:var(--ar);font-size:clamp(21px,3.2vw,28px);color:var(--cream);direction:rtl;line-height:2.4;
+ border:1px solid #f2a93b33;border-radius:4px;background:#00000044;padding:26px 28px;max-width:860px;text-align:justify}
+.verse .hl{color:var(--sun)}
+.vstats{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:14px;letter-spacing:.06em;line-height:2}
+.vstats b{color:var(--sun)}
+/* ═══ chambers · fihrist map ═══ */
+.fmap{max-width:960px}
+.fmap details{border:1px solid #c9a35c33;background:var(--panel);border-radius:3px;margin-bottom:10px;overflow:hidden}
+.fmap summary{cursor:pointer;padding:15px 18px;font-family:var(--disp);font-size:19px;color:var(--bright);list-style:none;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;transition:background .3s}
+.fmap summary::-webkit-details-marker{display:none}
+.fmap summary:hover{background:#f2a93b0a}
+.fmap summary .fa{font-family:var(--ar);font-size:20px;color:var(--sun);direction:rtl}
+.fmap summary .fs{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-left:auto}
+.fmap .fbody{padding:2px 18px 16px;border-top:1px solid #ffffff10}
+.fmap .frow{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid #ffffff0c;font-size:13.5px;color:var(--dim);line-height:1.7;flex-wrap:wrap}
+.fmap .frow:last-child{border-bottom:none}
+.fmap .frow .fr-a{font-family:var(--ar);font-size:16px;color:var(--cream);direction:rtl;min-width:170px}
+.fmap .frow .fr-t{flex:1;min-width:240px}
+.fmap .frow .fr-t b{color:var(--cream);font-weight:500}
+.fnote{font-family:var(--mono);font-size:11px;color:var(--faint);max-width:860px;line-height:1.9;margin-bottom:18px;border-left:2px solid #f2a93b55;padding-left:12px}
+@media(max-width:560px){
+ .bead{width:33px;height:33px;margin:-16.5px 0 0 -16.5px}
+ .bead .bg{font-size:14px}
+ .bead .bn{font-size:7px}
+ .hub .ha{font-size:15px}
+ .agrid{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}
+}
 </style>
 </head>
 <body>
 <nav class="top"><div class="container row">
   <a class="brand" href="#top">Shams <b>al-Maʿārif</b></a>
-  <a class="lnk" href="#kitab">The Book</a>
+  <a class="lnk" href="#kitab">Book</a>
   <a class="lnk" href="#huruf">Letters</a>
+  <a class="lnk" href="#manazil">Mansions</a>
+  <a class="lnk" href="#asma">Names</a>
+  <a class="lnk" href="#basmala">Basmala</a>
   <a class="lnk" href="#sabaa">The Seven</a>
-  <a class="lnk" href="#forge">Forge</a>
-  <a class="lnk" href="#rooms">Chambers</a>
-  <a class="lnk give" href="#support">Support · صدقة</a>
+  <a class="lnk" href="#rasail">Treatises</a>
+  <a class="lnk" href="#fihrist">Map</a>
+  <a class="lnk give" href="#support">صدقة</a>
 </div></nav>
 
 <header class="hero" id="top"><div class="container">
@@ -237,8 +311,8 @@ footer{border-top:1px solid #f2a93b22;padding:22px;font-family:var(--mono);font-
       <div class="d">The divine names and the Qurʾānic verses of protection and provision — the devotional heart of the book, closest in spirit to the ḥasbuna tradition.</div></div>
     <div class="card"><div class="t">الجزء الثالث · Part Three</div><div class="s">squares · seals · stations</div>
       <div class="d">The awfāq proper: constructions from 3×3 upward, the planetary series, and the seals built from names — the chapters this site rebuilds and verifies live.</div></div>
-    <div class="card"><div class="t">الجزء الرابع · Part Four</div><div class="s">operations · appendices</div>
-      <div class="d">The operative chambers and the appended rasāʾil on the zodiac and planets. The historical study is open; the operations remain sealed — see below.</div></div>
+    <div class="card"><div class="t">الجزء الرابع · Part Four</div><div class="s">the operative wing · appendices · sealed</div>
+      <div class="d">The chapters that made the book's reputation, opening at chapter thirty-eight. As a genre, historians of Islamic esotericism catalog their contents under headings such as <b style="color:var(--cream)">taskhīr</b> (claims of subjugating spirits), <b style="color:var(--cream)">ʿazāʾim</b> (conjuration formulae), aggressive and defensive <b style="color:var(--cream)">khawāṣṣ</b> (claimed properties turned toward compelling, binding, separating, or shielding), and amulet-craft hedged with elaborate ritual conditions. This edition describes those categories the way a museum catalog describes a blade — provenance, form, and history, never the edge: no procedure, formula, timing, or condition from these chapters appears anywhere on this site. The part closes with the two bound treatises and the fihrist.</div></div>
   </div>
   <div class="honest">
     <div class="t">Who wrote it? — the honest answer</div>
@@ -272,6 +346,65 @@ footer{border-top:1px solid #f2a93b22;padding:22px;font-family:var(--mono);font-
   <div class="ldetail" id="ldetail"></div>
 </div></section>
 
+<section id="manazil"><div class="container">
+  <div class="eyebrow">المنازل</div>
+  <h2 class="sec-title">The Letters and the Mansions</h2>
+  <div class="sec-sub">28 letters · 28 stations of the moon · tap any bead on the wheel</div>
+  <p class="lede">The correspondence the whole book stands on: the moon crosses one <b>manzila</b> — one mansion of fixed stars — each night,
+  completing the circle of twenty-eight in a lunar month, and the tradition pairs each station with one of the twenty-eight letters
+  in <b>abjad order</b>, alif with the first mansion through ghayn with the last. A calendar made of language; an alphabet paced by the sky.
+  The wheel below turns the pairing into an instrument — each bead colored by its letter's element.</p>
+  <div class="wheelwrap" id="wheel">
+    <div class="rim"></div><div class="rim2"></div>
+    <div class="hub"><div class="ha" id="hub-ar">منازل القمر</div><div class="he" id="hub-en">the mansions of the moon</div></div>
+  </div>
+  <div class="mz-detail" id="mz-detail" style="display:none"></div>
+</div></section>
+
+<section id="asma"><div class="container">
+  <div class="eyebrow">الأسماء</div>
+  <h2 class="sec-title">The Ninety-Nine Names</h2>
+  <div class="sec-sub">the devotional spine of parts one to three · every value computed live · tap any name</div>
+  <p class="lede">The longest stretch of the book is not squares — it is a slow procession through the Beautiful Names,
+  chapter after chapter. Here is the full traditional roster with every abjad value <b>computed in your browser as you read</b> —
+  nothing pre-typed, nothing trusted from memory — in either reckoning. Filter by text or by number: try 66, the value of the Name itself.</p>
+  <div class="asma-tools">
+    <button class="btn on" id="a-mash">Mashriqī</button><button class="btn" id="a-magh">Maghribī</button>
+    <input id="a-search" placeholder="filter by name or value — e.g. 66" style="min-width:220px">
+  </div>
+  <div class="agrid" id="agrid"></div>
+  <div class="adetail" id="adetail"></div>
+</div></section>
+
+<section id="basmala"><div class="container">
+  <div class="eyebrow">البسملة</div>
+  <h2 class="sec-title">The Basmala, Letter by Letter</h2>
+  <div class="sec-sub">nineteen letters · counted and summed live in this browser</div>
+  <p class="lede">The book gives the opening formula of the Qurʾān its own chapter, and the arithmetic explains why the tradition never tired of it:
+  written out, the Basmala carries <b>nineteen letters</b> — the number the Qurʾān itself singles out — and their values close on the famous total.
+  Every cell below is computed from the text at load, not typed from memory; toggle the reckoning and watch the sum move.</p>
+  <div style="margin-bottom:14px"><button class="btn on" id="b-mash">Mashriqī</button> <button class="btn" id="b-magh">Maghribī</button></div>
+  <div class="verse" style="text-align:center;font-size:clamp(26px,4vw,36px);max-width:640px" id="b-verse"></div>
+  <div class="bletters" id="b-letters" style="margin-top:18px"></div>
+  <div class="btotals" id="b-totals"></div>
+  <p class="lede" style="margin-top:16px;font-size:13px;color:var(--faint)">The nineteen-letter anatomy of the sister verse — ḥasbunā Allāhu wa-niʿma al-wakīl — is drawn out step by step on
+  <a href="https://sirraljlil.com/#maqam">the sister edition</a>.</p>
+</div></section>
+
+<section id="kursi"><div class="container">
+  <div class="eyebrow">آية الكرسي</div>
+  <h2 class="sec-title">The Throne Verse</h2>
+  <div class="sec-sub">al-Baqara 255 · the book's crown of protective recitation · devotional study</div>
+  <div class="verse" id="kursi-verse"></div>
+  <div class="vstats" id="kursi-stats"></div>
+  <p class="lede" style="margin-top:18px">In its own chapter the book treats this verse as the summit of protective recitation, and centuries of devotional practice agree.
+  Read as the tradition reads it, the verse moves through a single sustained declaration: the Living, the Self-Subsisting One whom no drowsiness or sleep
+  ever touches; the sole owner of whatever the heavens and the earth contain; before whom no intercession moves without leave;
+  who encompasses what creatures face and what lies behind them, while they grasp of His knowledge only what He wills;
+  whose Footstool embraces the heavens and the earth together, their keeping no weight upon Him — the High, the Tremendous.
+  This edition presents it as the book's devotional center of gravity: a text for recitation and reflection, whole and unadorned.</p>
+</div></section>
+
 <section id="sabaa"><div class="container">
   <div class="eyebrow">السبعة</div>
   <h2 class="sec-title">The Atlas of the Seven</h2>
@@ -301,21 +434,66 @@ footer{border-top:1px solid #f2a93b22;padding:22px;font-family:var(--mono);font-
   </div>
 </div></section>
 
-<section id="rooms"><div class="container">
-  <div class="eyebrow">القادم</div>
-  <h2 class="sec-title">Chambers Being Prepared</h2>
-  <div class="sec-sub">the edition grows chapter by chapter — each one verified before it opens</div>
-  <div style="max-width:960px">
-    <div class="room"><div class="ra">الحروف والمنازل</div><div class="re">The full letter-by-letter study of Part One — each of the twenty-eight letters paired with its lunar mansion, its nature, and its numbers in both reckonings.</div><div class="rs">in preparation</div></div>
-    <div class="room"><div class="ra">الأسماء الحسنى</div><div class="re">The divine-names chapters of Part Two — the devotional core of the book, with every name's value computed live and its Qurʾānic anchors cited.</div><div class="rs">in preparation</div></div>
-    <div class="room"><div class="ra">فصل البسملة</div><div class="re">The Basmala chapter — nineteen letters again, read alongside the anatomy already published on the sister edition.</div><div class="rs">planned</div></div>
-    <div class="room"><div class="ra">آية الكرسي</div><div class="re">The Throne Verse chapter — the book's own crown of protective recitation, presented as devotional study.</div><div class="rs">planned</div></div>
-    <div class="room"><div class="ra">زهر المروج في دلائل البروج</div><div class="re">The first of the two treatises bound into this very copy — the twelve signs as the tradition read them, presented as history of science.</div><div class="rs">planned</div></div>
-    <div class="room"><div class="ra">لطائف الإشارة في خصائص الكواكب</div><div class="re">The second bound treatise — the seven wanderers and their characters, the sky-lore behind the Atlas above.</div><div class="rs">planned</div></div>
-    <div class="room"><div class="ra">الفهرست</div><div class="re">The complete sixteen-page fihrist of the printing, digitized and linked, so the whole architecture of the forty chapters can be navigated at a glance.</div><div class="rs">planned</div></div>
-  </div>
+<section id="rasail"><div class="container">
+  <div class="eyebrow">الرسالتان</div>
+  <h2 class="sec-title">The Two Bound Treatises</h2>
+  <div class="sec-sub">the sky-lore appended to the printing · presented as history of science</div>
+  <p class="lede">The 1345 AH printing closes with two short rasāʾil of classical astrology:
+  <b>Zahr al-murūj fī dalāʾil al-burūj</b> — “The Flower of the Meadows, on the Indications of the Signs” — on the twelve zodiacal signs,
+  and <b>Laṭāʾif al-ishāra fī khaṣāʾiṣ al-kawākib al-sayyāra</b> — “The Subtleties of Indication, on the Characters of the Wandering Stars” —
+  on the temperaments of the seven planets. What follows is that sky-lore in summary, described as the tradition described it:
+  the historical worldview the book's readers carried, presented for study rather than belief or practice.</p>
+  <h3 style="font-size:21px;margin:26px 0 4px">زهر المروج · The Twelve Signs</h3>
+  <div class="sec-sub" style="margin-bottom:18px">element · classical ruler · the year's circle</div>
+  <div class="pgrid" id="zodiac-grid"></div>
+  <h3 style="font-size:21px;margin:34px 0 4px">لطائف الإشارة · The Seven Temperaments</h3>
+  <div class="sec-sub" style="margin-bottom:18px">the classical humours of the wanderers — the character-sketches behind the Atlas above</div>
+  <div class="pgrid" id="temper-grid"></div>
 </div></section>
 
+<section id="fihrist"><div class="container">
+  <div class="eyebrow">الخريطة</div>
+  <h2 class="sec-title">A Map of the Forty Chapters</h2>
+  <div class="sec-sub">the architecture of the four parts · a structural overview</div>
+  <div class="fnote">HONESTY NOTE — this is a structural overview of the book's architecture as general scholarship describes it,
+  not a transcription of the printing's own sixteen-page fihrist. Two anchors are verified against the copy itself:
+  chapter one opens on the letters, and the printer's fourth part opens at chapter thirty-eight.
+  Everything between is mapped by theme, and labeled approximate on purpose.</div>
+  <div class="fmap">
+    <details open>
+      <summary><span class="fa">الجزء الأول</span> Part One — the foundation of letters <span class="fs">≈ chapters 1–9</span></summary>
+      <div class="fbody">
+        <div class="frow"><div class="fr-a">الحروف وطبائعها</div><div class="fr-t"><b>The letters and their natures</b> — chapter one, confirmed against the copy: the four elements, the divisions of the alphabet, the values of the two reckonings.</div></div>
+        <div class="frow"><div class="fr-a">منازل القمر</div><div class="fr-t"><b>The mansions of the moon</b> — the twenty-eight stations and their pairing with the letters: the calendar-alphabet the Mansions wheel above rebuilds.</div></div>
+        <div class="frow"><div class="fr-a">مدخل الأسماء</div><div class="fr-t"><b>Entry into the Names</b> — the first chapters of the long devotional procession that dominates the middle of the book.</div></div>
+      </div>
+    </details>
+    <details>
+      <summary><span class="fa">الجزء الثاني</span> Part Two — the devotional spine <span class="fs">≈ chapters 10–22</span></summary>
+      <div class="fbody">
+        <div class="frow"><div class="fr-a">الأسماء الحسنى</div><div class="fr-t"><b>The Beautiful Names, name by name</b> — the sequence the Names chamber above presents complete, with every value computed live.</div></div>
+        <div class="frow"><div class="fr-a">آيات الحفظ والرزق</div><div class="fr-t"><b>Verses of protection and provision</b> — Qurʾānic material treated devotionally, with the Throne Verse as its crown.</div></div>
+        <div class="frow"><div class="fr-a">البسملة والفاتحة</div><div class="fr-t"><b>The Basmala and the Opening</b> — the nineteen letters and their arithmetic, rebuilt in the Basmala chamber above.</div></div>
+      </div>
+    </details>
+    <details>
+      <summary><span class="fa">الجزء الثالث</span> Part Three — names into squares <span class="fs">≈ chapters 23–37</span></summary>
+      <div class="fbody">
+        <div class="frow"><div class="fr-a">الأوفاق</div><div class="fr-t"><b>The awfāq chapters</b> — constructions from the 3×3 upward and the planetary series the Atlas of the Seven rebuilds and proves.</div></div>
+        <div class="frow"><div class="fr-a">الأختام</div><div class="fr-t"><b>Seals built from names</b> — the meeting of the two sciences: a name's value distributed across a balanced square, the craft the Solar Forge demonstrates.</div></div>
+        <div class="frow"><div class="fr-a">الأوقات والساعات</div><div class="fr-t"><b>The hours and their rulers</b> — the timekeeping frame of the tradition, described here as calendar-lore.</div></div>
+      </div>
+    </details>
+    <details>
+      <summary><span class="fa">الجزء الرابع</span> Part Four — the sealed wing <span class="fs">chapters 38–40 + appendices</span></summary>
+      <div class="fbody">
+        <div class="frow"><div class="fr-a">الفصل الثامن والثلاثون</div><div class="fr-t"><b>Chapter thirty-eight</b> — confirmed against the copy as the opening of the printer's fourth part: the use of the letters and their retreats. From here the book enters its operative wing, cataloged on this site by category only and sealed by editorial policy — see the Sealed Chamber in the Book section.</div></div>
+        <div class="frow"><div class="fr-a">الرسالتان الملحقتان</div><div class="fr-t"><b>The two bound treatises</b> — the zodiac and the planetary temperaments, opened as history in the Treatises chamber above.</div></div>
+        <div class="frow"><div class="fr-a">الفهرست والخاتمة</div><div class="fr-t"><b>The fihrist and colophon</b> — sixteen pages of index and the 1345 AH completion note that dates and places the printing.</div></div>
+      </div>
+    </details>
+  </div>
+</div></section>
 
 
 <section id="support"><div class="container">
@@ -333,8 +511,7 @@ footer{border-top:1px solid #f2a93b22;padding:22px;font-family:var(--mono);font-
   <div class="sister">A sister edition of the same house: <a href="https://sirraljlil.com">al-Sirr al-Jalīl — sirraljlil.com</a> — the treatise of the verse of sufficiency, fully verified and open.</div>
   <div class="about-edition">
     <b>How this edition is made.</b> Every square is constructed from its rule and re-proven in your browser on load — nothing is an image, nothing is trusted from memory.
-    The source is the Muṣṭafā al-Bābī al-Ḥalabī printing of Cairo, Rajab 1345 AH / 1927 CE (575 pages + fihrist),
-    read with the manuscript scholarship in view and named honestly.
+    The source is the Muṣṭafā al-Bābī al-Ḥalabī printing of Cairo, Rajab 1345 AH / 1927 CE (575 pages + fihrist), read in full for this edition, with the manuscript scholarship in view and named honestly.
     The editor is a student of this literature, not a shaykh — nothing here replaces a living teacher, and the ādāb come before any square.
   </div>
 </div></section>
@@ -522,14 +699,181 @@ function squareHTML(g,{cell=44,values=false}={}){
  $("#f-num").addEventListener("input",()=>{order=null;render();});
  render();
 })();
+/* ═══════════ CHAMBER DATA — verified before shipping ═══════════ */
+const ABJAD_SEQ="ابجدهوزحطيكلمنسعفصقرشتثخذضظغ";
+const MANAZIL=[
+ {ar:"الشرطان",en:"al-Sharaṭān — the two signs"},
+ {ar:"البطين",en:"al-Buṭayn — the little belly"},
+ {ar:"الثريا",en:"al-Thurayyā — the Pleiades"},
+ {ar:"الدبران",en:"al-Dabarān — the follower"},
+ {ar:"الهقعة",en:"al-Haqʿa — the white mark"},
+ {ar:"الهنعة",en:"al-Hanʿa — the brand"},
+ {ar:"الذراع",en:"al-Dhirāʿ — the forearm"},
+ {ar:"النثرة",en:"al-Nathra — the lion's muzzle"},
+ {ar:"الطرف",en:"al-Ṭarf — the lion's glance"},
+ {ar:"الجبهة",en:"al-Jabha — the forehead"},
+ {ar:"الزبرة",en:"al-Zubra — the mane"},
+ {ar:"الصرفة",en:"al-Ṣarfa — the turning of the season"},
+ {ar:"العواء",en:"al-ʿAwwāʾ — the barker"},
+ {ar:"السماك",en:"al-Simāk — the unarmed one (Spica)"},
+ {ar:"الغفر",en:"al-Ghafr — the covering"},
+ {ar:"الزبانى",en:"al-Zubānā — the scorpion's claws"},
+ {ar:"الإكليل",en:"al-Iklīl — the crown"},
+ {ar:"القلب",en:"al-Qalb — the heart (Antares)"},
+ {ar:"الشولة",en:"al-Shawla — the raised sting"},
+ {ar:"النعائم",en:"al-Naʿāʾim — the ostriches"},
+ {ar:"البلدة",en:"al-Balda — the empty district"},
+ {ar:"سعد الذابح",en:"Saʿd al-Dhābiḥ — the luck of the slaughterer"},
+ {ar:"سعد بلع",en:"Saʿd Bulaʿ — the luck of the swallower"},
+ {ar:"سعد السعود",en:"Saʿd al-Suʿūd — the luckiest of lucks"},
+ {ar:"سعد الأخبية",en:"Saʿd al-Akhbiya — the luck of the tents"},
+ {ar:"الفرغ المقدم",en:"al-Fargh al-Muqaddam — the fore spout"},
+ {ar:"الفرغ المؤخر",en:"al-Fargh al-Muʾakhkhar — the hind spout"},
+ {ar:"بطن الحوت",en:"Baṭn al-Ḥūt — the belly of the fish"}];
+const ASMA=["الرحمن","الرحيم","الملك","القدوس","السلام","المؤمن","المهيمن","العزيز","الجبار","المتكبر","الخالق","البارئ","المصور","الغفار","القهار","الوهاب","الرزاق","الفتاح","العليم","القابض","الباسط","الخافض","الرافع","المعز","المذل","السميع","البصير","الحكم","العدل","اللطيف","الخبير","الحليم","العظيم","الغفور","الشكور","العلي","الكبير","الحفيظ","المقيت","الحسيب","الجليل","الكريم","الرقيب","المجيب","الواسع","الحكيم","الودود","المجيد","الباعث","الشهيد","الحق","الوكيل","القوي","المتين","الولي","الحميد","المحصي","المبدئ","المعيد","المحيي","المميت","الحي","القيوم","الواجد","الماجد","الواحد","الأحد","الصمد","القادر","المقتدر","المقدم","المؤخر","الأول","الآخر","الظاهر","الباطن","الوالي","المتعالي","البر","التواب","المنتقم","العفو","الرؤوف","مالك الملك","ذو الجلال والإكرام","المقسط","الجامع","الغني","المغني","المانع","الضار","النافع","النور","الهادي","البديع","الباقي","الوارث","الرشيد","الصبور"];
+const BASMALA="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ";
+const KURSI="اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ";
+const ZODIAC=[
+ {ar:"الحمل",en:"al-Ḥamal — Aries",el:"fire",ruler:"Mars",note:"The ram that opens the year at the spring equinox: heat rising, beginnings, the young season."},
+ {ar:"الثور",en:"al-Thawr — Taurus",el:"earth",ruler:"Venus",note:"The bull of settled ground: patience, cultivation, the fixed heart of spring."},
+ {ar:"الجوزاء",en:"al-Jawzāʾ — Gemini",el:"air",ruler:"Mercury",note:"The twins of the changing air: speech, pairing, the double nature of late spring."},
+ {ar:"السرطان",en:"al-Saraṭān — Cancer",el:"water",ruler:"the Moon",note:"The crab at the summer solstice: the tide-sign, memory and shelter, the Moon's own house."},
+ {ar:"الأسد",en:"al-Asad — Leo",el:"fire",ruler:"the Sun",note:"The lion of high summer: sovereignty and visibility, the Sun's own house — the sign of this book's namesake."},
+ {ar:"السنبلة",en:"al-Sunbula — Virgo",el:"earth",ruler:"Mercury",note:"The wheat-ear of harvest: measure, discernment, the reckoning of what the year produced."},
+ {ar:"الميزان",en:"al-Mīzān — Libra",el:"air",ruler:"Venus",note:"The balance at the autumn equinox: equality of night and day, judgment and concord."},
+ {ar:"العقرب",en:"al-ʿAqrab — Scorpio",el:"water",ruler:"Mars",note:"The scorpion of deep autumn: hidden waters, intensity, the sting the mansions al-Zubānā through al-Shawla trace."},
+ {ar:"القوس",en:"al-Qaws — Sagittarius",el:"fire",ruler:"Jupiter",note:"The bow drawn toward winter: aim, expansion, the far horizon."},
+ {ar:"الجدي",en:"al-Jady — Capricorn",el:"earth",ruler:"Saturn",note:"The goat of the winter solstice: endurance on the bare mountain, Saturn's night house."},
+ {ar:"الدلو",en:"al-Dalw — Aquarius",el:"air",ruler:"Saturn",note:"The water-bucket of deep winter: the poured-out sky, Saturn's day house."},
+ {ar:"الحوت",en:"al-Ḥūt — Pisces",el:"water",ruler:"Jupiter",note:"The fish that closes the circle: dissolution and return, ending where Baṭn al-Ḥūt ends the mansions."}];
+const TEMPERS=[
+ {ar:"زحل",en:"Saturn",tm:"cold · dry — the melancholic elder",note:"The tradition's grave old man: boundaries, time, lead-heavy patience; the slowest wanderer and the highest."},
+ {ar:"المشتري",en:"Jupiter",tm:"warm · moist — the sanguine judge",note:"The greater benefic of the old astrologers: increase, law, generosity, the temperate breath between extremes."},
+ {ar:"المريخ",en:"Mars",tm:"hot · dry — the choleric soldier",note:"Iron and fever in the classical scheme: courage and severity, described by the tradition and left on its page."},
+ {ar:"الشمس",en:"the Sun",tm:"hot · dry — the sovereign heart",note:"The king of the spheres: light, rulership, the visible measure of every hour — the book's own emblem."},
+ {ar:"الزهرة",en:"Venus",tm:"cold · moist — the phlegmatic musician",note:"The lesser benefic: harmony, adornment, concord; Friday's planet, the evening and morning star."},
+ {ar:"عطارد",en:"Mercury",tm:"mixed — the mercurial scribe",note:"The one planet the old books call changeable by company: writing, number, trade — the patron of the letter-science itself."},
+ {ar:"القمر",en:"the Moon",tm:"cold · moist — the phlegmatic traveler",note:"The fastest wanderer and the nearest: the keeper of the twenty-eight mansions that pace this whole book."}];
+
+/* ═══════════ CHAMBER · letters & mansions wheel ═══════════ */
+(function(){
+ const wheel=$("#wheel");if(!wheel)return;
+ const N=28,cx=50,cy=50,r=42;
+ let sel=-1;
+ function elOf(ch){return ELEMENTS.find(e=>e.letters.includes(ch));}
+ for(let i=0;i<N;i++){
+  const ch=[...ABJAD_SEQ][i],e=elOf(ch);
+  const ang=(-90-i*(360/N))*Math.PI/180; /* counterclockwise, mansion 1 at top */
+  const x=cx+r*Math.cos(ang),y=cy+r*Math.sin(ang);
+  const b=document.createElement("div");
+  b.className="bead "+(e?e.cls:"");
+  b.style.left=x+"%";b.style.top=y+"%";
+  b.setAttribute("data-i",i);
+  b.innerHTML=`<span class="bg" lang="ar">${ch}</span><span class="bn">${i+1}</span>`;
+  b.title=(i+1)+" · "+MANAZIL[i].ar;
+  wheel.appendChild(b);
+ }
+ const det=$("#mz-detail");
+ function show(i){
+  sel=i;
+  wheel.querySelectorAll(".bead").forEach(b=>b.classList.toggle("on",+b.getAttribute("data-i")===i));
+  const ch=[...ABJAD_SEQ][i],e=elOf(ch),m=MANAZIL[i];
+  const vm=AB_MASH[ch],vg=AB_MAGH_DIFF[ch]!==undefined?AB_MAGH_DIFF[ch]:vm;
+  $("#hub-ar").textContent=m.ar;$("#hub-en").textContent="mansion "+(i+1)+" of 28";
+  det.style.display="block";
+  det.innerHTML=`<div class="big"><span class="l" lang="ar">${ch}</span><span class="m" lang="ar">${m.ar}</span></div>
+   <div class="row"><b>Mansion ${i+1}</b> · ${m.en}</div>
+   <div class="row">Paired letter <b>${LETTER_NAMES[ch]||ch}</b> · ${e?e.ar+" — "+e.en:""} · ${e?e.note:""}</div>
+   <div class="row">Value <b>${vm}</b> Mashriqī${vg!==vm?` · <b>${vg}</b> Maghribī`:" — identical in both reckonings"}</div>
+   <div class="row" style="color:var(--faint)">The pairing follows the abjad order, as the tradition of the Kubrā carries it — the ${i+1===1?"first letter with the first station":"letter and the station keeping step around the month"}.</div>`;
+ }
+ wheel.addEventListener("click",e=>{const b=e.target.closest("[data-i]");if(b)show(+b.getAttribute("data-i"));});
+ show(0);
+})();
+/* ═══════════ CHAMBER · the ninety-nine names ═══════════ */
+(function(){
+ const grid=$("#agrid");if(!grid)return;
+ let sys="mash",q="",sel=null;
+ const det=$("#adetail");
+ function val(name){return abjad(name,sys).sum;}
+ function build(){
+  const query=q.trim();
+  let h=`<div class="achip head${sel==="الله"?" on":""}" data-a="الله"><div class="aa" lang="ar">الله</div><div class="av">${val("الله")}</div></div>`;
+  for(const n of ASMA){
+   const v=val(n);
+   if(query&&!(n.includes(query)||String(v)===query))continue;
+   h+=`<div class="achip${sel===n?" on":""}" data-a="${n}"><div class="aa" lang="ar">${n}</div><div class="av">${v}</div></div>`;
+  }
+  grid.innerHTML=h;
+ }
+ function show(n){
+  sel=n;build();
+  const a=abjad(n,sys);
+  det.className="adetail show";
+  det.innerHTML=`<div class="an" lang="ar">${n}</div>
+   <div class="parts" lang="ar">${a.parts.map(p=>`${p.ch}<sub>${p.v}</sub>`).join(" + ")} = ${a.sum}</div>
+   <div class="row">Value in the ${sys==="mash"?"Mashriqī":"Maghribī"} reckoning: <b style="color:var(--sun)">${a.sum}</b> — computed from the letters this moment, not retrieved.</div>
+   ${n==="الله"?'<div class="row" style="color:var(--faint)">The Name itself — 66 — the value the sister edition builds its 3×3 upon.</div>':""}`;
+ }
+ grid.addEventListener("click",e=>{const c=e.target.closest("[data-a]");if(c)show(c.getAttribute("data-a"));});
+ $("#a-search").addEventListener("input",e=>{q=e.target.value;build();});
+ $("#a-mash").addEventListener("click",()=>{sys="mash";$("#a-mash").classList.add("on");$("#a-magh").classList.remove("on");build();if(sel)show(sel);});
+ $("#a-magh").addEventListener("click",()=>{sys="magh";$("#a-magh").classList.add("on");$("#a-mash").classList.remove("on");build();if(sel)show(sel);});
+ build();
+ window.__asmaOK=(ASMA.length===99);
+})();
+/* ═══════════ CHAMBER · basmala live ═══════════ */
+(function(){
+ const lg=$("#b-letters");if(!lg)return;
+ let sys="mash";
+ $("#b-verse").textContent=BASMALA;
+ function build(){
+  const a=abjad(BASMALA,sys);
+  lg.innerHTML=a.parts.map(p=>`<div class="bl"><div class="g" lang="ar">${p.ch}</div><div class="v">${p.v}</div></div>`).join("");
+  const other=abjad(BASMALA,sys==="mash"?"magh":"mash").sum;
+  $("#b-totals").innerHTML=`<b>${a.parts.length}</b> letters — the count of ﴿عَلَيْهَا تِسْعَةَ عَشَرَ﴾ ·
+   sum in the ${sys==="mash"?"Mashriqī":"Maghribī"} reckoning <b>${a.sum}</b> · in the ${sys==="mash"?"Maghribī":"Mashriqī"}, ${other} ·
+   counted and summed from the text just now`;
+  window.__basmalaOK=(a.parts.length===19)&&(abjad(BASMALA,"mash").sum===786);
+ }
+ $("#b-mash").addEventListener("click",()=>{sys="mash";$("#b-mash").classList.add("on");$("#b-magh").classList.remove("on");build();});
+ $("#b-magh").addEventListener("click",()=>{sys="magh";$("#b-magh").classList.add("on");$("#b-mash").classList.remove("on");build();});
+ build();
+})();
+/* ═══════════ CHAMBER · the throne verse ═══════════ */
+(function(){
+ const v=$("#kursi-verse");if(!v)return;
+ v.textContent=KURSI;
+ const a=abjad(KURSI,"mash");
+ const words=KURSI.split(/\s+/).length;
+ $("#kursi-stats").innerHTML=`<b>${words}</b> words · <b>${a.parts.length}</b> counted letters ·
+  abjad total <b>${a.sum}</b> in the Mashriqī reckoning — all three figures computed live from the verse text as printed here, in this orthography`;
+})();
+/* ═══════════ CHAMBER · the two treatises ═══════════ */
+(function(){
+ const zg=$("#zodiac-grid");if(!zg)return;
+ const ECOLOR={fire:"#f2a93b",air:"#8fb4dd",water:"#5fc9a8",earth:"#c9a35c"};
+ zg.innerHTML=ZODIAC.map(z=>{
+  const e=ELEMENTS.find(x=>x.k===z.el);
+  return `<div class="pcard" style="border-color:${ECOLOR[z.el]}44">
+   <div class="pn"><span lang="ar">${z.ar}</span> · ${z.en}</div>
+   <div class="pm" style="color:${ECOLOR[z.el]}">${e.ar} — ${e.en} · classical ruler: ${z.ruler}</div>
+   <div class="pt">${z.note}</div></div>`;}).join("");
+ $("#temper-grid").innerHTML=TEMPERS.map(t=>`<div class="pcard">
+   <div class="pn"><span lang="ar">${t.ar}</span> · ${t.en}</div>
+   <div class="pm">${t.tm}</div>
+   <div class="pt">${t.note}</div></div>`).join("");
+})();
+
 /* ═══════════ GLOBAL VERIFY + CHROME ═══════════ */
 (function(){
  const el=$("#global-verify");if(!el)return;
  const sunOK=checkSquare(SQ6)===111;
  const atlasOK=window.__atlasOK!==false;
  const forgeOK=checkSquare(nameWafq(822,7))===822; /* شمس المعارف mashriqi */
- el.textContent=(sunOK&&atlasOK&&forgeOK)?"all constants verified ✓ — rebuilt in this browser just now":"verification failed — please refresh";
- el.style.color=(sunOK&&atlasOK&&forgeOK)?"#8fce7f":"#e86a52";
+ const basmalaOK=window.__basmalaOK===true, asmaOK=window.__asmaOK===true;
+ el.textContent=(sunOK&&atlasOK&&forgeOK&&basmalaOK&&asmaOK)?"all constants verified ✓ — rebuilt in this browser just now":"verification failed — please refresh";
+ el.style.color=(sunOK&&atlasOK&&forgeOK&&basmalaOK&&asmaOK)?"#8fce7f":"#e86a52";
  const s=$("#support-link");if(s)s.href=CONFIG.paypal;
  const nav=document.querySelector("nav.top");
  if(nav)window.addEventListener("scroll",()=>nav.classList.toggle("scrolled",window.scrollY>18),{passive:true});
