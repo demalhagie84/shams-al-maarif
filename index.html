@@ -260,6 +260,48 @@ footer{border-top:1px solid #f2a93b22;padding:22px;font-family:var(--mono);font-
 .tale p:last-child{margin-bottom:0}
 .tale p b{color:var(--cream);font-weight:500}
 .tale .orn{text-align:center;color:#f2a93b77;font-size:13px;margin:4px 0 10px;letter-spacing:.4em}
+/* ═══ start here ═══ */
+.startwrap{max-width:860px}
+.startwrap .room .rs{color:var(--sun)}
+/* ═══ gallery ═══ */
+.exgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:1100px}
+.ex{border:1px solid #c9a35c33;background:var(--panel);border-radius:3px;padding:18px;transition:border-color .35s var(--ease)}
+.ex:hover{border-color:#f2a93b66}
+.ex .xt{font-family:var(--disp);font-size:18px;color:var(--bright)}
+.ex .xs{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:3px 0 12px}
+.ex .xd{font-size:12.5px;color:var(--dim);line-height:1.7;margin-top:10px}
+.ex .stagewrap{position:relative;display:inline-block}
+.ex svg.overlay{position:absolute;inset:6px;pointer-events:none}
+.ex .c.hl{background:#f2a93b26;color:var(--sun)}
+.ex .c.dim2{opacity:.22}
+.ex .c.inv{background:#8fb4dd1c}
+/* ═══ glossary ═══ */
+.gl{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px;max-width:1100px}
+.gl .g-item{border:1px solid #ffffff1c;background:#00000033;border-radius:2px;padding:12px 14px}
+.gl .g-t{font-family:var(--disp);font-size:16.5px;color:var(--cream)}
+.gl .g-t .ga{font-family:var(--ar);font-size:16px;color:var(--sun);margin-left:6px}
+.gl .g-d{font-size:12.5px;color:var(--dim);line-height:1.65;margin-top:5px}
+.gl .g-d a{color:var(--brass)}
+/* ═══ search ═══ */
+.srch-btn{position:fixed;right:22px;bottom:22px;z-index:80;width:52px;height:52px;border-radius:50%;
+ border:1px solid var(--sun);background:#120c05;color:var(--sun);font-size:20px;cursor:pointer;
+ box-shadow:0 6px 24px #000000aa;transition:.25s var(--ease)}
+.srch-btn:hover{transform:scale(1.08)}
+.srch{position:fixed;inset:auto 22px 86px auto;width:min(430px,calc(100vw - 44px));max-height:min(560px,70vh);
+ z-index:81;background:#0f0a04;border:1px solid #f2a93b66;border-radius:4px;box-shadow:0 18px 60px #000000dd;
+ display:none;flex-direction:column;overflow:hidden}
+.srch.open{display:flex}
+.srch .s-head{padding:12px;border-bottom:1px solid #f2a93b26}
+.srch input{width:100%}
+.srch .s-res{overflow-y:auto;padding:8px 12px 14px}
+.s-item{padding:10px 8px;border-bottom:1px solid #ffffff0e;cursor:pointer;border-radius:2px}
+.s-item:hover{background:#f2a93b0d}
+.s-item .si-t{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--sun)}
+.s-item .si-x{font-size:13px;color:var(--dim);line-height:1.6;margin-top:3px}
+.s-item .si-x mark{background:#f2a93b33;color:var(--cream)}
+.s-none{font-family:var(--mono);font-size:12px;color:var(--faint);padding:14px 8px}
+@media(max-width:520px){.srch{inset:auto 12px 80px 12px;width:auto}}
+
 @media(max-width:560px){
  .bead{width:33px;height:33px;margin:-16.5px 0 0 -16.5px}
  .bead .bg{font-size:14px}
@@ -272,6 +314,7 @@ footer{border-top:1px solid #f2a93b22;padding:22px;font-family:var(--mono);font-
 <body>
 <nav class="top"><div class="container row">
   <a class="brand" href="#top">Shams <b>al-Maʿārif</b></a>
+  <a class="lnk" href="#start">Start</a>
   <a class="lnk" href="#kitab">Book</a>
   <a class="lnk" href="#huruf">Letters</a>
   <a class="lnk" href="#manazil">Mansions</a>
@@ -285,8 +328,12 @@ footer{border-top:1px solid #f2a93b22;padding:22px;font-family:var(--mono);font-
   <a class="lnk" href="#nabi">Prophet</a>
   <a class="lnk" href="#tales">Tales</a>
   <a class="lnk" href="#sabaa">The Seven</a>
+  <a class="lnk" href="#awfaq">Awfāq</a>
+  <a class="lnk" href="#gallery">Gallery</a>
   <a class="lnk" href="#rasail">Treatises</a>
   <a class="lnk" href="#fihrist">Map</a>
+  <a class="lnk" href="#glossary">Glossary</a>
+  <a class="lnk" href="#method">Method</a>
   <a class="lnk give" href="#support">صدقة</a>
 </div></nav>
 
@@ -321,6 +368,19 @@ footer{border-top:1px solid #f2a93b22;padding:22px;font-family:var(--mono);font-
     <p class="da">Behind the rumors is a vast medieval encyclopedia of the science of letters, the divine names, the lunar mansions, and number itself — the same sciences carried in <i>al-Sirr al-Jalīl</i>, at cathedral scale. This edition opens the chambers of <b>study</b>: every square rebuilt and proven live, every claim checked against the arithmetic. And it keeps the operative chambers <b>sealed</b> — studied as history, never handed out as instruction. That is not timidity. It is the ādāb the masters themselves demanded.</p>
   </div>
 </div></header>
+
+<section id="start" style="padding-top:60px"><div class="container">
+  <div class="eyebrow">ابدأ هنا</div>
+  <h2 class="sec-title">Start Here</h2>
+  <div class="sec-sub">eighteen chambers is a lot of building · five doors, in order, for a first visit</div>
+  <div class="startwrap">
+    <a class="room" href="#kitab" style="text-decoration:none"><div class="ra" lang="ar">١ · الكتاب</div><div class="re"><b style="color:var(--cream)">What is this book?</b> Ten minutes with the Book chamber: the four parts, who really wrote it, and exactly what this edition keeps sealed and why. Everything else on the page makes sense after this.</div><div class="rs">begin</div></a>
+    <a class="room" href="#huruf" style="text-decoration:none"><div class="ra" lang="ar">٢ · الحروف</div><div class="re"><b style="color:var(--cream)">The alphabet as foundation.</b> Twenty-eight letters, four natures, two reckonings — the raw material every later chamber builds with. Tap a few letters; toggle the reckonings.</div><div class="rs">the ground</div></a>
+    <a class="room" href="#basmala" style="text-decoration:none"><div class="ra" lang="ar">٣ · البسملة</div><div class="re"><b style="color:var(--cream)">One devotional chamber in full.</b> The Basmala: nineteen letters counted live, and the Realities exposition beneath — arithmetic and meaning as the two halves of one door.</div><div class="rs">the heart</div></a>
+    <a class="room" href="#sabaa" style="text-decoration:none"><div class="ra" lang="ar">٤ · السبعة</div><div class="re"><b style="color:var(--cream)">Watch the squares prove themselves.</b> The Atlas of the Seven, rebuilt and verified in your browser — then the Gallery below it, where the same mathematics is shown as pure geometric art.</div><div class="rs">the proof</div></a>
+    <a class="room" href="#fihrist" style="text-decoration:none"><div class="ra" lang="ar">٥ · الخريطة</div><div class="re"><b style="color:var(--cream)">Then take the map and wander.</b> The forty-chapter overview shows how everything fits — and every chamber stands alone, so any door is a fine next door. The search button at the corner of the screen knows the whole site.</div><div class="rs">the map</div></a>
+  </div>
+</div></section>
 
 <section id="kitab"><div class="container">
   <div class="eyebrow">الكتاب</div>
@@ -755,6 +815,58 @@ footer{border-top:1px solid #f2a93b22;padding:22px;font-family:var(--mono);font-
   </div>
 </div></section>
 
+<section id="awfaq"><div class="container">
+  <div class="eyebrow">الطلسمات والأوفاق</div>
+  <h2 class="sec-title">Talismans and Awfāq</h2>
+  <div class="sec-sub">what the objects are · the mathematics · the history · the scholarship — museum treatment throughout</div>
+  <div class="realities" style="margin-top:8px">
+    <p>Two words govern this book's reputation, and both deserve a museum label rather than a rumor. <b>Wafq</b> — plural
+    awfāq — is Arabic for <i>accord, harmony</i>: the tradition's name for what mathematicians call a magic square, an
+    arrangement of numbers in which every row, column, and diagonal agrees on a single sum. <b>Ṭilasm</b> — the ancestor of
+    the English <i>talisman</i> — descends from the Greek <i>telesma</i>, a completed or consecrated thing: the tradition's
+    name for an object bearing writing, number, or figure, made to carry meaning beyond its material. A wafq is a structure;
+    a ṭilasm is an artifact; this literature is where the two met.</p>
+    <p>The mathematics is real mathematics, and it is older than any use anyone put it to. The 3×3 arrangement appears in
+    Chinese tradition as the Lo Shu diagram long before Arabic letters existed to label it. When the translation movement
+    brought the sciences into Arabic, the squares came with them, and the Islamic mathematicians treated construction as
+    pure combinatorics: how to build a balanced square of <b>any</b> order, odd or even — a genuinely hard problem, solved in
+    treatises of the tenth and eleventh centuries by mathematicians of the first rank who wrote on awfāq exactly as they wrote
+    on optics or number theory. Their general law survives on this very page: every square in the Atlas and the Gallery obeys
+    the constant those treatises derived, and your browser re-derives it on every load. That inheritance — construction as
+    demonstrable mathematics — is the part of the tradition this edition operates.</p>
+    <p>The artifact record is a museum wing of its own. Collections around the world hold the physical descendants of this
+    literature: engraved medicinal bowls with squares worked into their basins, seal-stones and pendants bearing the 3×3,
+    talismanic shirts painted with grids and verses, and manuscript charts by the thousands. Historians read these objects
+    the way they read votive offerings from any tradition — as testimony to what people feared, hoped, and trusted —
+    and the honest museum label for all of them says the same thing: these artifacts document a worldview; they do not
+    demonstrate a mechanism.</p>
+    <p>The Būnian corpus stands at the meeting point. In it, the mathematicians' squares and the devotional tradition's names
+    were braided together, and the result traveled astonishingly far: the same seven planetary attributions displayed in the
+    Atlas above crossed into Latin compendia and Renaissance Europe, where the "planetary squares" became a fixture of a whole
+    second esoteric tradition. Modern scholarship reads ʿilm al-awfāq as one of history's clearest hinges between mathematics,
+    medicine, and piety — and reads the operative manuals, this book's included, as documents <b>of</b> belief rather than
+    instructions worth transmitting. That is precisely this edition's stance, stated academically.</p>
+  </div>
+  <div class="sealed" style="margin-top:20px">
+    <div class="t">What this chamber deliberately withholds</div>
+    <p>Everything above describes; nothing prescribes. In keeping with the Sealed Chamber policy stated in the Book section,
+    this edition deliberately withholds the operative layer of the awfāq tradition in every form: construction formulas
+    directed at effects, pairings of squares with verses or names for stated purposes, material prescriptions, conditions,
+    and timings. That withholding is not softened by any framing — devotional, Qurʾānic, or protective — because framing does
+    not change what an instruction is. The mathematics is open above and in the Gallery below, as mathematics.
+    The uses remain behind glass, as history.</p>
+  </div>
+</div></section>
+
+<section id="gallery"><div class="container">
+  <div class="eyebrow">المعرض</div>
+  <h2 class="sec-title">Symbols and Squares — a Gallery</h2>
+  <div class="sec-sub">four structures as pure mathematical art · no use-cases · every property verified live as you toggle it</div>
+  <p class="lede">Four exhibits, chosen for what they reveal about structure alone. Each control below doesn't just decorate —
+  it <b>verifies</b>: the highlighted property is recomputed from the numbers in front of you.</p>
+  <div class="exgrid" id="exgrid"></div>
+</div></section>
+
 <section id="rasail"><div class="container">
   <div class="eyebrow">الرسالتان</div>
   <h2 class="sec-title">The Two Bound Treatises</h2>
@@ -817,6 +929,26 @@ footer{border-top:1px solid #f2a93b22;padding:22px;font-family:var(--mono);font-
 </div></section>
 
 
+<section id="glossary"><div class="container">
+  <div class="eyebrow">المسرد</div>
+  <h2 class="sec-title">Glossary</h2>
+  <div class="sec-sub">the technical terms of all eighteen chambers · each entry links where the term lives</div>
+  <div class="gl" id="glgrid"></div>
+</div></section>
+
+<section id="method"><div class="container">
+  <div class="eyebrow">المنهج</div>
+  <h2 class="sec-title">Sources and Method</h2>
+  <div class="sec-sub">how the historical content on this site is made · five commitments</div>
+  <div style="max-width:960px">
+    <div class="room"><div class="ra" lang="ar">المصدر</div><div class="re"><b style="color:var(--cream)">An identified source, cited bibliographically.</b> The edition is built from a specific copy — the four-parts-in-one-volume printing of Muṣṭafā al-Bābī al-Ḥalabī, Cairo, completed Rajab 1345 AH / 1927 CE, corrected for the press by Ibrāhīm ibn Ḥasan al-Anbābī — identified from its own colophon and named wherever it is used. The scan itself is neither hosted nor linked; the reference is bibliographic, as in any scholarly work.</div></div>
+    <div class="room"><div class="ra" lang="ar">التحقق</div><div class="re"><b style="color:var(--cream)">Verification over assertion.</b> Every number on this site — square constants, letter counts, abjad values — is computed in the visitor's browser at load or on interaction, never typed from memory. Where a figure depends on orthography (letter counts of Qurʾānic text), the dependence is stated next to the figure. The footer's verification line fails loudly if any check fails.</div></div>
+    <div class="room"><div class="ra" lang="ar">الأصالة</div><div class="re"><b style="color:var(--cream)">Original prose throughout.</b> All expository and narrative writing is composed for this edition. No published translation is reproduced or closely paraphrased; in the newer chambers scripture is described rather than displayed; heritage stories are retold as summary, and original parables are labeled as original.</div></div>
+    <div class="room"><div class="ra" lang="ar">الوصف لا التعليم</div><div class="re"><b style="color:var(--cream)">Description, never instruction.</b> The line that governs every chamber: history and structure are described at the level a museum catalog would use; procedures, formulas-for-effect, conditions, and timings are withheld in every framing. The full policy is the Sealed Chamber statement in the Book section, and the Talismans and Awfāq chamber applies it to this site's own subject matter explicitly.</div></div>
+    <div class="room"><div class="ra" lang="ar">طبقات التراث</div><div class="re"><b style="color:var(--cream)">Scholarship with its layers showing.</b> The attribution question is stated plainly (the Kubrā as a compilation grown around al-Būnī's authentic works, per modern manuscript scholarship); later custom is labeled as later custom; devotional readings are distinguished from scholarly ones wherever they diverge. Where this edition itself could not verify a boundary or a claim, it says so on the page. Corrections are welcome, and verified corrections will be published.</div></div>
+  </div>
+</div></section>
+
 <section id="support"><div class="container">
   <div class="eyebrow" style="color:var(--sage)">صدقة</div>
   <h2 class="sec-title">Support the Work</h2>
@@ -830,11 +962,6 @@ footer{border-top:1px solid #f2a93b22;padding:22px;font-family:var(--mono);font-
     <p class="mono" style="font-size:10.5px;color:var(--faint);margin-top:14px">no accounts · no tracking · everything computed on your device</p>
   </div>
   <div class="sister">A sister edition of the same house: <a href="https://sirraljlil.com">al-Sirr al-Jalīl — sirraljlil.com</a> — the treatise of the verse of sufficiency, fully verified and open.</div>
-  <div class="about-edition">
-    <b>How this edition is made.</b> Every square is constructed from its rule and re-proven in your browser on load — nothing is an image, nothing is trusted from memory.
-    The source is the Muṣṭafā al-Bābī al-Ḥalabī printing of Cairo, Rajab 1345 AH / 1927 CE (575 pages + fihrist), read in full for this edition, with the manuscript scholarship in view and named honestly.
-    The editor is a student of this literature, not a shaykh — nothing here replaces a living teacher, and the ādāb come before any square.
-  </div>
 </div></section>
 
 <footer>
@@ -1274,6 +1401,197 @@ const NABI_NAMES=[
  build();
 })();
 
+/* ═══════════ GALLERY — verified geometric exhibits ═══════════ */
+(function(){
+ const mount=$("#exgrid");if(!mount)return;
+ const LOSHU=[[8,1,6],[3,5,7],[4,9,2]];
+ const PAND=[[1,8,13,12],[14,11,2,7],[4,5,16,9],[15,10,3,6]];
+ const BORD=[[1,2,18,21,23],[19,16,9,14,7],[20,11,13,15,6],[22,12,17,10,4],[3,24,8,5,25]];
+ function dbl4(n){const g=Array.from({length:n},(_,r)=>Array.from({length:n},(_,c)=>r*n+c+1));
+  for(let r=0;r<n;r++)for(let c=0;c<n;c++){const br=r%4,bc=c%4;
+   if(!((br===bc)||(br+bc===3)))g[r][c]=n*n+1-g[r][c];}return g;}
+ const EIGHT=dbl4(8);
+ function sq(g,cell,id){let h=`<div class="stagewrap"><div class="sq" id="${id}"><div>`;
+  g.forEach((row,r)=>{h+=`<div class="r">`;
+   row.forEach((v,c)=>{h+=`<div class="c" data-r="${r}" data-c="${c}" style="width:${cell}px;height:${cell}px"><span class="n" style="font-size:${Math.max(10,cell*0.32)}px">${v}</span></div>`;});
+   h+=`</div>`;});
+  return h+`</div></div></div>`;}
+ function lineSum(g,cells){return cells.reduce((a,[r,c])=>a+g[r][c],0);}
+ mount.innerHTML=`
+  <div class="ex"><div class="xt">I · The Path of the Nine</div><div class="xs">lo shu structure · 3×3 · constant 15</div>
+   ${sq(LOSHU,52,"ex-loshu")}
+   <div style="margin-top:10px"><button class="btn" id="loshu-btn">Trace 1 → 9</button></div>
+   <div class="xd" id="loshu-d">The oldest balanced square known. Follow the numbers in counting order and a hidden zigzag appears — pure construction-order made visible, the geometry beneath the arithmetic.</div></div>
+  <div class="ex"><div class="xt">II · The Square With No Weak Diagonal</div><div class="xs">pandiagonal 4×4 · constant 34 · 8 broken diagonals</div>
+   ${sq(PAND,46,"ex-pand")}
+   <div style="margin-top:10px"><button class="btn" id="pand-btn">Cycle broken diagonals</button></div>
+   <div class="xd" id="pand-d">In an ordinary square only the two main diagonals balance. Here every wrap-around diagonal balances too — tap to walk all eight and watch each one recompute to 34, live.</div></div>
+  <div class="ex"><div class="xt">III · The Square Within the Square</div><div class="xs">bordered 5×5 · constant 65 outside · 39 within</div>
+   ${sq(BORD,42,"ex-bord")}
+   <div style="margin-top:10px"><button class="btn" id="bord-btn">Peel the border</button></div>
+   <div class="xd" id="bord-d">A concentric construction: strip the outer ring and a complete 3×3 remains, balanced on its own constant. The medieval treatises loved these — squares nested like rings of a tree.</div></div>
+  <div class="ex"><div class="xt">IV · The Lattice of Complements</div><div class="xs">8×8 · constant 260 · built by reflection</div>
+   ${sq(EIGHT,34,"ex-eight")}
+   <div style="margin-top:10px"><button class="btn" id="eight-btn">Show the lattice</button></div>
+   <div class="xd" id="eight-d">Write 1–64 in reading order, then reflect every cell off the diagonal lattice to its complement (65 − n). The bishop-move pattern that results is the entire construction — balance produced by pure symmetry.</div></div>`;
+ /* I — trace path */
+ let traced=false;
+ $("#loshu-btn").addEventListener("click",()=>{
+  const box=$("#ex-loshu").parentElement;traced=!traced;
+  let old=box.querySelector("svg.overlay");if(old)old.remove();
+  $("#loshu-btn").textContent=traced?"Hide the path":"Trace 1 → 9";
+  if(!traced)return;
+  const cell=52,pad=1.5,off=cell/2;
+  const pos={};LOSHU.forEach((row,r)=>row.forEach((v,c)=>pos[v]=[c*(cell+0)+off, r*(cell+0)+off]));
+  let pts=[];for(let k=1;k<=9;k++)pts.push(pos[k].join(","));
+  const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("class","overlay");svg.setAttribute("viewBox",`0 0 ${cell*3} ${cell*3}`);
+  svg.innerHTML=`<polyline points="${pts.join(" ")}" fill="none" stroke="#f2a93b" stroke-width="2.5" opacity=".85"/>`;
+  box.appendChild(svg);
+ });
+ /* II — broken diagonals */
+ let pk=-1;
+ $("#pand-btn").addEventListener("click",()=>{
+  pk=(pk+1)%9;
+  const cs=$("#ex-pand").querySelectorAll(".c");cs.forEach(c=>c.classList.remove("hl"));
+  if(pk===8){$("#pand-d").textContent="All eight verified — every broken diagonal of this square sums to 34. Tap again to restart.";pk=-1;return;}
+  const down=pk<4,k=pk%4,cells=[];
+  for(let r=0;r<4;r++)cells.push([r, down?(k+r)%4:(k-r+8)%4]);
+  cells.forEach(([r,c])=>{$("#ex-pand").querySelector(`[data-r="${r}"][data-c="${c}"]`).classList.add("hl");});
+  const s=lineSum(PAND,cells);
+  $("#pand-d").innerHTML=`Broken diagonal ${pk+1} of 8 — recomputed live: <b style="color:${s===34?"#8fce7f":"#e86a52"}">${cells.map(([r,c])=>PAND[r][c]).join(" + ")} = ${s}</b>`;
+ });
+ /* III — peel border */
+ let peeled=false;
+ $("#bord-btn").addEventListener("click",()=>{
+  peeled=!peeled;
+  $("#ex-bord").querySelectorAll(".c").forEach(el=>{
+   const r=+el.getAttribute("data-r"),c=+el.getAttribute("data-c");
+   const border=(r===0||r===4||c===0||c===4);
+   el.classList.toggle("dim2",peeled&&border);});
+  $("#bord-btn").textContent=peeled?"Restore the border":"Peel the border";
+  if(peeled){
+   const inner=BORD.slice(1,4).map(r=>r.slice(1,4));
+   let ok=true;inner.forEach(r=>{if(r.reduce((a,b)=>a+b)!==39)ok=false});
+   for(let c=0;c<3;c++){let s=0;for(let r=0;r<3;r++)s+=inner[r][c];if(s!==39)ok=false}
+   if(inner[0][0]+inner[1][1]+inner[2][2]!==39||inner[0][2]+inner[1][1]+inner[2][0]!==39)ok=false;
+   $("#bord-d").innerHTML=`Border peeled. The inner 3×3 re-verified this moment: every row, column, and diagonal = <b style="color:${ok?"#8fce7f":"#e86a52"}">39 ${ok?"✓":"✗"}</b> — a complete square living inside a square.`;
+  }else{
+   $("#bord-d").textContent="A concentric construction: strip the outer ring and a complete 3×3 remains, balanced on its own constant. The medieval treatises loved these — squares nested like rings of a tree.";
+  }
+ });
+ /* IV — complement lattice */
+ let lat=false;
+ $("#eight-btn").addEventListener("click",()=>{
+  lat=!lat;
+  $("#ex-eight").querySelectorAll(".c").forEach(el=>{
+   const r=+el.getAttribute("data-r"),c=+el.getAttribute("data-c");
+   const diag=((r%4)===(c%4))||((r%4)+(c%4)===3);
+   el.classList.toggle("inv",lat&&!diag);});
+  $("#eight-btn").textContent=lat?"Hide the lattice":"Show the lattice";
+  $("#eight-d").textContent=lat?
+   "Tinted cells were reflected to their complements (65 − n); untinted cells kept their reading-order values. That single symmetry rule is the whole construction — and the footer verified the result on load.":
+   "Write 1–64 in reading order, then reflect every cell off the diagonal lattice to its complement (65 − n). The bishop-move pattern that results is the entire construction — balance produced by pure symmetry.";
+ });
+ /* verify all exhibits, feed global */
+ function ok(g){const n=g.length,t=g[0].reduce((a,b)=>a+b,0);
+  let good=true;g.forEach(r=>{if(r.reduce((a,b)=>a+b)!==t)good=false});
+  for(let c=0;c<n;c++){let s=0;for(let r=0;r<n;r++)s+=g[r][c];if(s!==t)good=false}
+  return good;}
+ window.__galleryOK=ok(LOSHU)&&ok(PAND)&&ok(BORD)&&ok(EIGHT);
+})();
+/* ═══════════ GLOSSARY ═══════════ */
+(function(){
+ const g=$("#glgrid");if(!g)return;
+ const T=[
+  ["Abjad","أبجد","The assignment of number-values to the 28 letters; this site defaults to the Mashriqī reckoning with the Maghribī one tap away.","#huruf"],
+  ["ʿAzāʾim","عزائم","A category of the operative literature: conjuration formulae. Named on this site as a museum heading only — see Part Four's framing.","#kitab"],
+  ["Awfāq","أوفاق","Magic squares — arrangements where every row, column, and diagonal share one sum. The word means 'accords.'","#awfaq"],
+  ["Basmala","البسملة","The opening formula of the Qurʾān: 19 letters, value 786 in the Mashriqī reckoning, counted live in its chamber.","#basmala"],
+  ["Fātiḥa","الفاتحة","The seven-verse opening sūra — the Mother of the Book — walked through movement by movement.","#umm"],
+  ["Iḥṣāʾ","إحصاء","'Enumeration' of the 99 Names — read by the masters as keeping count with a life, not a memory.","#sifat"],
+  ["ʿIlm al-ḥurūf","علم الحروف","The science of letters: the study of the alphabet's natures, values, and correspondences.","#huruf"],
+  ["Istiʾdhān","استئذان","Asking leave — the tradition's name for the posture of the Basmala at any threshold.","#basmala"],
+  ["Juzʾ","جزء","A 'part' of the printed book; this printing binds four ajzāʾ in one volume.","#kitab"],
+  ["Khawāṣṣ","خواص","'Special properties' — a category heading of the operative literature, named here at museum level only.","#kitab"],
+  ["Magic constant","الثابت","The shared sum of a square's lines: n(n²+1)/2 for numbers 1 to n². The Sun's 6×6 gives 111.","#sabaa"],
+  ["Manāzil","المنازل","The 28 lunar mansions — the moon's nightly stations, paired letter-for-letter with the alphabet.","#manazil"],
+  ["Mashriqī · Maghribī","مشرقي · مغربي","The Eastern and Western abjad reckonings; six letters differ between them, and al-Būnī wrote in the Western.","#huruf"],
+  ["Muqaṭṭaʿāt","المقطعات","The detached letters crowning 29 sūras — 14 forms, 14 distinct letters, half the alphabet.","#fawatih"],
+  ["Muʿawwidhatān","المعوذتان","'The two refuges' — the final two sūras, cast entirely as refuge-taking.","#hisn"],
+  ["Rasāʾil","رسائل","Short treatises; two on sky-lore are bound into the printing behind this edition.","#rasail"],
+  ["Takhalluq","تخلق","Taking on, at creaturely scale, the qualities the Names point to — the study of attributes ending in character.","#sifat"],
+  ["Tanzīh","تنزيه","Transcendence: affirming God beyond all likeness while keeping the given Names.","#sifat"],
+  ["Taskhīr","تسخير","'Subjugation' — the operative category that made the book's reputation; sealed on this site, named for the museum label only.","#kitab"],
+  ["Tawakkul","توكل","Entrusting reliance upon God — the devotional center of this literature and of the sister edition.","#qisas"],
+  ["Tawḥīd","توحيد","The confession that God is One — 'One not as first of a series but as that which admits no series.'","#sifat"],
+  ["Tawqīfī","توقيفي","'Held on deposit' — the doctrine that the divine Names are given by revelation, neither coined nor emptied.","#sifat"],
+  ["Ṭilasm","طلسم","From Greek telesma: an artifact bearing writing, number, or figure — described in this edition as museum object, never as device.","#awfaq"],
+  ["Wafq","وفق","Singular of awfāq: one balanced square. The Forge builds them from any name or number as contemplative mathematics.","#forge"]];
+ g.innerHTML=T.map(([en,ar,d,link])=>`<div class="g-item"><div class="g-t">${en}<span class="ga" lang="ar">${ar}</span></div>
+  <div class="g-d">${d} <a href="${link}">→ chamber</a></div></div>`).join("");
+})();
+/* ═══════════ SITE SEARCH ═══════════ */
+(function(){
+ const btn=document.createElement("button");btn.className="srch-btn";btn.id="srch-btn";btn.title="Search the chambers";btn.textContent="⌕";
+ const panel=document.createElement("div");panel.className="srch";panel.id="srch-panel";
+ panel.innerHTML=`<div class="s-head"><input id="srch-in" placeholder="search all chambers — e.g. mercy, 111, Antares, wafq"></div><div class="s-res" id="srch-res"><div class="s-none">Type to search everything on this page.</div></div>`;
+ document.body.appendChild(btn);document.body.appendChild(panel);
+ let index=null;
+ function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+ function buildIndex(){
+  index=[];
+  document.querySelectorAll("section").forEach(sec=>{
+   const id=sec.id;const h=sec.querySelector(".sec-title");
+   const title=h?h.textContent.trim():id;
+   sec.querySelectorAll("p, .d, .re, .fr-t, .pt, .row, .g-d, .xd, .pe, .cl").forEach(el=>{
+    const t=el.textContent.replace(/\s+/g," ").trim();
+    if(t.length>30)index.push({id,title,t,low:t.toLowerCase()});
+   });
+  });
+  /* data layers that render only on interaction */
+  try{MANAZIL.forEach((m,i)=>{const ch=[...ABJAD_SEQ][i];
+   const t=`Mansion ${i+1} · ${m.ar} · ${m.en} · paired letter ${LETTER_NAMES[ch]||ch} (${ch})`;
+   index.push({id:"manazil",title:"The Letters and the Mansions",t,low:t.toLowerCase()});});}catch(e){}
+  try{ASMA.forEach(n=>{const t=`${n} — one of the Ninety-Nine Names · value ${abjad(n,"mash").sum}`;
+   index.push({id:"asma",title:"The Ninety-Nine Names",t,low:t.toLowerCase()});});}catch(e){}
+  try{NABI_NAMES.forEach(n=>{const t=`${n.ar} · ${n.tr} — ${n.d}`;
+   index.push({id:"nabi",title:"Names and Qualities of the Prophet",t,low:t.toLowerCase()});});}catch(e){}
+ }
+ function run(q){
+  const res=$("#srch-res");q=q.trim().toLowerCase();
+  if(!q){res.innerHTML='<div class="s-none">Type to search everything on this page.</div>';return;}
+  if(!index)buildIndex();
+  const terms=q.split(/\s+/).filter(Boolean);
+  const scored=[];
+  for(const item of index){
+   let score=0;for(const t of terms){const c=item.low.split(t).length-1;if(c===0){score=0;break}score+=c;}
+   if(score>0)scored.push({...item,score});
+  }
+  scored.sort((a,b)=>b.score-a.score);
+  const top=scored.slice(0,12);
+  if(!top.length){res.innerHTML='<div class="s-none">Nothing found — try a shorter term.</div>';return;}
+  res.innerHTML=top.map(it=>{
+   const i=it.low.indexOf(terms[0]);
+   const from=Math.max(0,i-45),to=Math.min(it.t.length,i+95);
+   let snip=esc((from>0?"…":"")+it.t.slice(from,to)+(to<it.t.length?"…":""));
+   for(const t of terms){snip=snip.replace(new RegExp("("+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>");}
+   return `<div class="s-item" data-go="${it.id}"><div class="si-t">${esc(it.title)}</div><div class="si-x">${snip}</div></div>`;
+  }).join("");
+ }
+ btn.addEventListener("click",()=>{
+  panel.classList.toggle("open");
+  if(panel.classList.contains("open")){if(!index)buildIndex();$("#srch-in").focus();}
+ });
+ panel.addEventListener("click",e=>{
+  const go=e.target.closest("[data-go]");if(!go)return;
+  const sec=document.getElementById(go.getAttribute("data-go"));
+  if(sec){panel.classList.remove("open");sec.scrollIntoView({behavior:"smooth"});}
+ });
+ $("#srch-in").addEventListener("input",e=>run(e.target.value));
+ document.addEventListener("keydown",e=>{if(e.key==="Escape")panel.classList.remove("open");});
+})();
+
 /* ═══════════ GLOBAL VERIFY + CHROME ═══════════ */
 (function(){
  const el=$("#global-verify");if(!el)return;
@@ -1282,8 +1600,9 @@ const NABI_NAMES=[
  const forgeOK=checkSquare(nameWafq(822,7))===822; /* شمس المعارف mashriqi */
  const basmalaOK=window.__basmalaOK===true, asmaOK=window.__asmaOK===true;
  const fawatihOK=window.__fawatihOK===true, fatihaOK=window.__fatihaOK===true;
- el.textContent=(sunOK&&atlasOK&&forgeOK&&basmalaOK&&asmaOK&&fawatihOK&&fatihaOK)?"all constants verified ✓ — rebuilt in this browser just now":"verification failed — please refresh";
- el.style.color=(sunOK&&atlasOK&&forgeOK&&basmalaOK&&asmaOK&&fawatihOK&&fatihaOK)?"#8fce7f":"#e86a52";
+ const galleryOK=window.__galleryOK===true;
+ el.textContent=(sunOK&&atlasOK&&forgeOK&&basmalaOK&&asmaOK&&fawatihOK&&fatihaOK&&galleryOK)?"all constants verified ✓ — rebuilt in this browser just now":"verification failed — please refresh";
+ el.style.color=(sunOK&&atlasOK&&forgeOK&&basmalaOK&&asmaOK&&fawatihOK&&fatihaOK&&galleryOK)?"#8fce7f":"#e86a52";
  const s=$("#support-link");if(s)s.href=CONFIG.paypal;
  const nav=document.querySelector("nav.top");
  if(nav)window.addEventListener("scroll",()=>nav.classList.toggle("scrolled",window.scrollY>18),{passive:true});
