@@ -437,9 +437,36 @@ html{scroll-behavior:smooth}
   .orbit-node .on-ar{font-size:14px}
 }
 @media (prefers-reduced-motion: reduce){ .orbit-core-glow{animation:none} }
+
+/* ===== Outer rotating astrolabe rim (sun) ===== */
+.sun-rim{position:absolute;left:50%;top:50%;width:122%;height:122%;transform:translate(-50%,-50%);
+  animation:spinRev 220s linear infinite;pointer-events:none}
+@media (prefers-reduced-motion: reduce){ .sun-rim{animation:none} }
+
+/* ===== Orbit wheel: ground track ring ===== */
+.orbit-track{position:absolute;left:50%;top:78%;width:78%;height:110px;margin-left:-39%;margin-top:-55px;
+  border:1px solid #f2a93b2e;border-radius:50%;transform:rotateX(72deg);pointer-events:none;
+  box-shadow:0 0 40px -6px #f2a93b33 inset}
+.orbit-track::after{content:'';position:absolute;inset:14px;border:1px solid #f2a93b1c;border-radius:50%}
+@media (max-width:760px){ .orbit-track{width:82%;height:70px;margin-top:-35px} }
+
+/* ===== Scroll to top ===== */
+#toTop{position:fixed;left:24px;bottom:24px;width:44px;height:44px;border-radius:50%;
+  border:1px solid #f2a93b55;background:#0a0704cc;backdrop-filter:blur(6px);color:var(--sun);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:90;
+  font-family:var(--mono);font-size:16px;opacity:0;pointer-events:none;
+  transform:translateY(10px);transition:opacity .35s var(--ease),transform .35s var(--ease),box-shadow .3s,border-color .3s}
+#toTop.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+#toTop:hover{border-color:var(--sun);box-shadow:0 0 20px -3px #f2a93b99}
+
+/* ===== Nav fade polish ===== */
+.top::after{content:'';position:absolute;left:0;right:0;bottom:-10px;height:10px;pointer-events:none;
+  background:linear-gradient(180deg,#00000030,transparent);opacity:0;transition:opacity .4s}
+.top.scrolled::after{opacity:1}
 </style>
 </head>
 <body>
+<div id="toTop" role="button" tabindex="0" aria-label="scroll to top">↑</div>
 <nav class="top"><div class="container row">
   <a class="brand" href="#top">Shams <b>al-Maʿārif</b></a>
   <a class="lnk" href="#start">Start</a>
@@ -469,6 +496,7 @@ html{scroll-behavior:smooth}
   <div class="star-mote star-mote-1"></div><div class="star-mote star-mote-2"></div><div class="star-mote star-mote-3"></div><div class="star-mote star-mote-4"></div><div class="star-mote star-mote-5"></div><div class="star-mote star-mote-6"></div><div class="star-mote star-mote-7"></div><div class="star-mote star-mote-8"></div><div class="star-mote star-mote-9"></div><div class="star-mote star-mote-10"></div>
   <div class="sundisc">
     <div class="halo halo1"></div><div class="halo halo2"></div><div class="halo halo3"></div>
+    <svg class="sun-rim" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="49" fill="none" stroke="#f2a93b22" stroke-width=".3"/><circle cx="50" cy="50" r="41.5" fill="none" stroke="#f2a93b18" stroke-width=".25"/><line x1="50.00" y1="1.00" x2="50.00" y2="6.50" stroke="#f6c469" stroke-width=".5" opacity=".8"/><line x1="55.12" y1="1.27" x2="54.76" y2="4.75" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="60.19" y1="2.07" x2="59.46" y2="5.49" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="65.14" y1="3.40" x2="64.06" y2="6.73" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="69.93" y1="5.24" x2="68.51" y2="8.43" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="74.50" y1="7.56" x2="71.75" y2="12.33" stroke="#f6c469" stroke-width=".5" opacity=".8"/><line x1="78.80" y1="10.36" x2="76.74" y2="13.19" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="82.79" y1="13.59" x2="80.45" y2="16.19" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="86.41" y1="17.21" x2="83.81" y2="19.55" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="89.64" y1="21.20" x2="86.81" y2="23.26" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="92.44" y1="25.50" x2="87.67" y2="28.25" stroke="#f6c469" stroke-width=".5" opacity=".8"/><line x1="94.76" y1="30.07" x2="91.57" y2="31.49" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="96.60" y1="34.86" x2="93.27" y2="35.94" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="97.93" y1="39.81" x2="94.51" y2="40.54" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="98.73" y1="44.88" x2="95.25" y2="45.24" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="99.00" y1="50.00" x2="93.50" y2="50.00" stroke="#f6c469" stroke-width=".5" opacity=".8"/><line x1="98.73" y1="55.12" x2="95.25" y2="54.76" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="97.93" y1="60.19" x2="94.51" y2="59.46" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="96.60" y1="65.14" x2="93.27" y2="64.06" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="94.76" y1="69.93" x2="91.57" y2="68.51" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="92.44" y1="74.50" x2="87.67" y2="71.75" stroke="#f6c469" stroke-width=".5" opacity=".8"/><line x1="89.64" y1="78.80" x2="86.81" y2="76.74" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="86.41" y1="82.79" x2="83.81" y2="80.45" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="82.79" y1="86.41" x2="80.45" y2="83.81" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="78.80" y1="89.64" x2="76.74" y2="86.81" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="74.50" y1="92.44" x2="71.75" y2="87.67" stroke="#f6c469" stroke-width=".5" opacity=".8"/><line x1="69.93" y1="94.76" x2="68.51" y2="91.57" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="65.14" y1="96.60" x2="64.06" y2="93.27" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="60.19" y1="97.93" x2="59.46" y2="94.51" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="55.12" y1="98.73" x2="54.76" y2="95.25" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="50.00" y1="99.00" x2="50.00" y2="93.50" stroke="#f6c469" stroke-width=".5" opacity=".8"/><line x1="44.88" y1="98.73" x2="45.24" y2="95.25" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="39.81" y1="97.93" x2="40.54" y2="94.51" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="34.86" y1="96.60" x2="35.94" y2="93.27" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="30.07" y1="94.76" x2="31.49" y2="91.57" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="25.50" y1="92.44" x2="28.25" y2="87.67" stroke="#f6c469" stroke-width=".5" opacity=".8"/><line x1="21.20" y1="89.64" x2="23.26" y2="86.81" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="17.21" y1="86.41" x2="19.55" y2="83.81" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="13.59" y1="82.79" x2="16.19" y2="80.45" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="10.36" y1="78.80" x2="13.19" y2="76.74" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="7.56" y1="74.50" x2="12.33" y2="71.75" stroke="#f6c469" stroke-width=".5" opacity=".8"/><line x1="5.24" y1="69.93" x2="8.43" y2="68.51" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="3.40" y1="65.14" x2="6.73" y2="64.06" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="2.07" y1="60.19" x2="5.49" y2="59.46" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="1.27" y1="55.12" x2="4.75" y2="54.76" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="1.00" y1="50.00" x2="6.50" y2="50.00" stroke="#f6c469" stroke-width=".5" opacity=".8"/><line x1="1.27" y1="44.88" x2="4.75" y2="45.24" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="2.07" y1="39.81" x2="5.49" y2="40.54" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="3.40" y1="34.86" x2="6.73" y2="35.94" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="5.24" y1="30.07" x2="8.43" y2="31.49" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="7.56" y1="25.50" x2="12.33" y2="28.25" stroke="#f6c469" stroke-width=".5" opacity=".8"/><line x1="10.36" y1="21.20" x2="13.19" y2="23.26" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="13.59" y1="17.21" x2="16.19" y2="19.55" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="17.21" y1="13.59" x2="19.55" y2="16.19" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="21.20" y1="10.36" x2="23.26" y2="13.19" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="25.50" y1="7.56" x2="28.25" y2="12.33" stroke="#f6c469" stroke-width=".5" opacity=".8"/><line x1="30.07" y1="5.24" x2="31.49" y2="8.43" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="34.86" y1="3.40" x2="35.94" y2="6.73" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="39.81" y1="2.07" x2="40.54" y2="5.49" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><line x1="44.88" y1="1.27" x2="45.24" y2="4.75" stroke="#e8b84f" stroke-width=".22" opacity=".4"/><circle cx="50.00" cy="1.00" r="1.15" fill="#f6c469" opacity=".85"/><circle cx="50.00" cy="1.00" r="2.1" fill="none" stroke="#f2a93b55" stroke-width=".3"/><circle cx="84.65" cy="15.35" r="1.15" fill="#f6c469" opacity=".85"/><circle cx="84.65" cy="15.35" r="2.1" fill="none" stroke="#f2a93b55" stroke-width=".3"/><circle cx="99.00" cy="50.00" r="1.15" fill="#f6c469" opacity=".85"/><circle cx="99.00" cy="50.00" r="2.1" fill="none" stroke="#f2a93b55" stroke-width=".3"/><circle cx="84.65" cy="84.65" r="1.15" fill="#f6c469" opacity=".85"/><circle cx="84.65" cy="84.65" r="2.1" fill="none" stroke="#f2a93b55" stroke-width=".3"/><circle cx="50.00" cy="99.00" r="1.15" fill="#f6c469" opacity=".85"/><circle cx="50.00" cy="99.00" r="2.1" fill="none" stroke="#f2a93b55" stroke-width=".3"/><circle cx="15.35" cy="84.65" r="1.15" fill="#f6c469" opacity=".85"/><circle cx="15.35" cy="84.65" r="2.1" fill="none" stroke="#f2a93b55" stroke-width=".3"/><circle cx="1.00" cy="50.00" r="1.15" fill="#f6c469" opacity=".85"/><circle cx="1.00" cy="50.00" r="2.1" fill="none" stroke="#f2a93b55" stroke-width=".3"/><circle cx="15.35" cy="15.35" r="1.15" fill="#f6c469" opacity=".85"/><circle cx="15.35" cy="15.35" r="2.1" fill="none" stroke="#f2a93b55" stroke-width=".3"/></svg>
     <svg class="corona" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48.5" fill="none" stroke="#f2a93b2e" stroke-width=".3"/><circle cx="50" cy="50" r="43" fill="none" stroke="#e8b84f26" stroke-width=".25" stroke-dasharray="1 2.4"/><polygon points="50.00,5.00 59.58,14.26 72.50,11.03 76.16,23.84 88.97,27.50 85.74,40.42 95.00,50.00 85.74,59.58 88.97,72.50 76.16,76.16 72.50,88.97 59.58,85.74 50.00,95.00 40.42,85.74 27.50,88.97 23.84,76.16 11.03,72.50 14.26,59.58 5.00,50.00 14.26,40.42 11.03,27.50 23.84,23.84 27.50,11.03 40.42,14.26" fill="none" stroke="#f2a93b38" stroke-width=".4"/><polygon points="58.00,9.79 66.67,25.06 84.09,27.22 79.42,44.15 90.21,58.00 74.94,66.67 72.78,84.09 55.85,79.42 42.00,90.21 33.33,74.94 15.91,72.78 20.58,55.85 9.79,42.00 25.06,33.33 27.22,15.91 44.15,20.58" fill="none" stroke="#f6c46938" stroke-width=".35"/></svg>
     <svg class="flare" viewBox="0 0 100 100" aria-hidden="true"><g stroke="#fff3d6" stroke-width=".35" opacity=".55"><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(11.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(33.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(56.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(78.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(101.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(123.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(146.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(168.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(191.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(213.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(236.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(258.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(281.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(303.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(326.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(348.75 50 50)"/></g></svg>
     <svg class="rays" viewBox="0 0 100 100" aria-hidden="true">
@@ -506,6 +534,7 @@ html{scroll-behavior:smooth}
   <h2 class="sec-title">The Wheel of Chambers</h2>
   <div class="sec-sub">drag to turn the wheel &middot; click any chamber to enter it</div>
   <div class="orbit-stage" id="orbitStage" aria-label="3D navigation wheel of chambers">
+    <div class="orbit-track"></div>
     <div class="orbit-ring" id="orbitRing"></div>
     <div class="orbit-core"><div class="orbit-core-glow"></div></div>
   </div>
@@ -2013,6 +2042,23 @@ const NABI_NAMES=[
     requestAnimationFrame(idle);
   }
   }catch(e){ console.warn('orbit3d error', e); }
+})();
+</script>
+
+<script>
+(function(){
+  try{
+  var btn = document.getElementById('toTop');
+  if(!btn) return;
+  function onScroll(){
+    if((window.scrollY||0) > 500) btn.classList.add('show'); else btn.classList.remove('show');
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  function goTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+  btn.addEventListener('click', goTop);
+  btn.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); goTop(); } });
+  }catch(e){ console.warn('toTop error', e); }
 })();
 </script>
 </body>
