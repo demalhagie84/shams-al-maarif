@@ -1255,15 +1255,27 @@ const TEMPERS=[
   grid.innerHTML=h;
  }
  function show(n){
-  sel=n;build();
-  const a=abjad(n,sys);
-  det.className="adetail show";
-  det.innerHTML=`<div class="an" lang="ar">${n}</div>
-   <div class="parts" lang="ar">${a.parts.map(p=>`${p.ch}<sub>${p.v}</sub>`).join(" + ")} = ${a.sum}</div>
-   <div class="row">Value in the ${sys==="mash"?"Mashriqī":"Maghribī"} reckoning: <b style="color:var(--sun)">${a.sum}</b> — computed from the letters this moment, not retrieved.</div>
-   ${n==="الله"?'<div class="row" style="color:var(--faint)">The Name itself — 66 — the value the sister edition builds its 3×3 upon.</div>':""}`;
- }
- grid.addEventListener("click",e=>{const c=e.target.closest("[data-a]");if(c)show(c.getAttribute("data-a"));});
+sel=n;build();
+const a=abjad(n,sys);
+det.className="adetail show";
+let wafqHTML="";
+const A=a.sum;let ord=null;
+for(let k=3;k<=20;k++){if(nameWafq(A,k)){ord=k;break;}}
+if(ord){
+const g=nameWafq(A,ord);const t=checkSquare(g);
+const cell=Math.max(22,Math.min(40,Math.floor(260/ord)));
+wafqHTML=`<div class="row" style="margin-top:14px">Its wafq — a balanced square carrying this value, built live by the same verified engine as the Solar Forge:</div>
+<div style="margin-top:8px">${squareHTML(g,{cell})}</div>
+<div class="ok">${t===A?`✓ verified — every row & column = ${t} · ${ord}×${ord}`:"✗ verification failed"}</div>
+<div class="row" style="color:var(--faint);margin-top:6px">Shown for study and contemplation of the number — the fikr the tradition permits — never as an instruction for use. See the Talismans and Awfāq chamber for the full policy.</div>`;
+}
+det.innerHTML=`<div class="an" lang="ar">${n}</div>
+<div class="parts" lang="ar">${a.parts.map(p=>`${p.ch}<sub>${p.v}</sub>`).join(" + ")} = ${a.sum}</div>
+<div class="row">Value in the ${sys==="mash"?"Mashriqī":"Maghribī"} reckoning: <b style="color:var(--sun)">${a.sum}</b> — computed from the letters this moment, not retrieved.</div>
+${n==="الله"?'<div class="row" style="color:var(--faint)">The Name itself — 66 — the value the sister edition builds its 3×3 upon.</div>':""}
+${wafqHTML}`;
+}
+grid.addEventListener("click",e=>{const c=e.target.closest("[data-a]");if(c)show(c.getAttribute("data-a"));});
  $("#a-search").addEventListener("input",e=>{q=e.target.value;build();});
  $("#a-mash").addEventListener("click",()=>{sys="mash";$("#a-mash").classList.add("on");$("#a-magh").classList.remove("on");build();if(sel)show(sel);});
  $("#a-magh").addEventListener("click",()=>{sys="magh";$("#a-magh").classList.add("on");$("#a-mash").classList.remove("on");build();if(sel)show(sel);});
