@@ -371,6 +371,72 @@ html{scroll-behavior:smooth}
   html{scroll-behavior:auto}
 }
 @media (hover:none){ #cursorGlow{display:none} }
+
+/* ===== Heavenly sun enhancement ===== */
+.corona{position:absolute;inset:0;animation:spinRev 150s linear infinite}
+.flare{position:absolute;inset:0;animation:spin 95s linear infinite,flareFlicker 3.6s ease-in-out infinite}
+@keyframes spinRev{to{transform:rotate(-360deg)}}
+@keyframes flareFlicker{0%,100%{opacity:.4}50%{opacity:.85}}
+.halo{position:absolute;left:50%;top:50%;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,#f2a93b26,transparent 70%)}
+.halo1{width:130%;height:130%;animation:glow 6s ease-in-out infinite}
+.halo2{width:165%;height:165%;animation:glow 9s ease-in-out infinite 1.2s;opacity:.7}
+.halo3{width:200%;height:200%;animation:glow 13s ease-in-out infinite 2.4s;opacity:.5}
+
+.star-mote{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff3d6;
+  box-shadow:0 0 6px 1px #f2a93b99;pointer-events:none;animation:twinkle 3.4s ease-in-out infinite;z-index:0}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1.3)}}
+.star-mote-1{top:12%;left:18%;animation-delay:.2s}
+.star-mote-2{top:20%;left:82%;animation-delay:1.1s}
+.star-mote-3{top:68%;left:9%;animation-delay:.6s}
+.star-mote-4{top:78%;left:88%;animation-delay:1.9s}
+.star-mote-5{top:6%;left:52%;animation-delay:.9s}
+.star-mote-6{top:40%;left:4%;animation-delay:2.4s}
+.star-mote-7{top:33%;left:94%;animation-delay:.4s}
+.star-mote-8{top:88%;left:46%;animation-delay:1.5s}
+.star-mote-9{top:15%;left:66%;animation-delay:2.1s}
+.star-mote-10{top:58%;left:96%;animation-delay:.7s}
+
+.sep span{display:inline-block;animation:sepPulse 3.2s ease-in-out infinite;text-shadow:0 0 10px #f2a93b88}
+@keyframes sepPulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.18)}}
+
+@media (prefers-reduced-motion: reduce){
+  .corona,.flare,.halo,.star-mote,.sep span{animation:none!important}
+}
+
+/* ===== 3D Wheel of Chambers ===== */
+.orbit-stage{position:relative;height:440px;margin:34px auto 10px;max-width:860px;perspective:1300px;perspective-origin:50% 45%}
+.orbit-ring{position:absolute;inset:0;transform-style:preserve-3d;cursor:grab;touch-action:pan-y}
+.orbit-ring.dragging{cursor:grabbing}
+.orbit-node{position:absolute;top:50%;left:50%;width:158px;margin:-48px 0 0 -79px;
+  padding:14px 12px;text-align:center;border:1px solid #c9a35c4d;border-radius:6px;
+  background:linear-gradient(180deg,#1b1108f0,#0a0704f0);backdrop-filter:blur(6px);
+  cursor:pointer;user-select:none;will-change:transform,opacity;transition:border-color .3s,box-shadow .3s}
+.orbit-node .on-ar{font-family:var(--ar);color:var(--gold);font-size:16px;display:block;margin-bottom:4px;line-height:1.3}
+.orbit-node .on-en{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+.orbit-node:hover{border-color:var(--sun)}
+.orbit-node.front{border-color:var(--sun);box-shadow:0 0 30px -6px #f2a93b99}
+.orbit-node.front .on-en{color:var(--sun)}
+.orbit-core{position:absolute;top:50%;left:50%;width:84px;height:84px;margin:-42px 0 0 -42px;
+  border-radius:50%;background:radial-gradient(circle,#f6c469,#c9822f 55%,#6b3f10 100%);
+  box-shadow:0 0 70px 14px #f2a93b4d;pointer-events:none;z-index:0}
+.orbit-core-glow{position:absolute;inset:-34px;border-radius:50%;
+  background:radial-gradient(circle,#f2a93b33,transparent 70%);animation:glow 4.2s ease-in-out infinite}
+.orbit-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;
+  border:1px solid #f2a93b55;border-radius:50%;background:#0a070499;color:var(--sun);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:var(--mono);
+  font-size:16px;z-index:5;transition:.25s var(--ease)}
+.orbit-arrow:hover{border-color:var(--sun);box-shadow:0 0 16px -2px #f2a93b88}
+.orbit-arrow.left{left:6px}
+.orbit-arrow.right{right:6px}
+.orbit-hint{text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--faint);margin-top:-2px}
+@media (max-width:760px){
+  .orbit-stage{height:340px}
+  .orbit-node{width:124px;margin:-40px 0 0 -62px;padding:10px 8px}
+  .orbit-node .on-ar{font-size:14px}
+}
+@media (prefers-reduced-motion: reduce){ .orbit-core-glow{animation:none} }
 </style>
 </head>
 <body>
@@ -400,7 +466,11 @@ html{scroll-behavior:smooth}
 </div></nav>
 
 <header class="hero" id="top"><div class="container">
+  <div class="star-mote star-mote-1"></div><div class="star-mote star-mote-2"></div><div class="star-mote star-mote-3"></div><div class="star-mote star-mote-4"></div><div class="star-mote star-mote-5"></div><div class="star-mote star-mote-6"></div><div class="star-mote star-mote-7"></div><div class="star-mote star-mote-8"></div><div class="star-mote star-mote-9"></div><div class="star-mote star-mote-10"></div>
   <div class="sundisc">
+    <div class="halo halo1"></div><div class="halo halo2"></div><div class="halo halo3"></div>
+    <svg class="corona" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48.5" fill="none" stroke="#f2a93b2e" stroke-width=".3"/><circle cx="50" cy="50" r="43" fill="none" stroke="#e8b84f26" stroke-width=".25" stroke-dasharray="1 2.4"/><polygon points="50.00,5.00 59.58,14.26 72.50,11.03 76.16,23.84 88.97,27.50 85.74,40.42 95.00,50.00 85.74,59.58 88.97,72.50 76.16,76.16 72.50,88.97 59.58,85.74 50.00,95.00 40.42,85.74 27.50,88.97 23.84,76.16 11.03,72.50 14.26,59.58 5.00,50.00 14.26,40.42 11.03,27.50 23.84,23.84 27.50,11.03 40.42,14.26" fill="none" stroke="#f2a93b38" stroke-width=".4"/><polygon points="58.00,9.79 66.67,25.06 84.09,27.22 79.42,44.15 90.21,58.00 74.94,66.67 72.78,84.09 55.85,79.42 42.00,90.21 33.33,74.94 15.91,72.78 20.58,55.85 9.79,42.00 25.06,33.33 27.22,15.91 44.15,20.58" fill="none" stroke="#f6c46938" stroke-width=".35"/></svg>
+    <svg class="flare" viewBox="0 0 100 100" aria-hidden="true"><g stroke="#fff3d6" stroke-width=".35" opacity=".55"><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(11.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(33.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(56.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(78.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(101.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(123.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(146.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(168.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(191.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(213.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(236.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(258.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(281.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(303.75 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(326.25 50 50)"/><line x1="50" y1="1" x2="50" y2="6.5" transform="rotate(348.75 50 50)"/></g></svg>
     <svg class="rays" viewBox="0 0 100 100" aria-hidden="true">
       <g stroke="#f2a93b" stroke-width=".5" opacity=".7">
         <line x1="50" y1="0" x2="50" y2="8"/><line x1="50" y1="92" x2="50" y2="100"/>
@@ -430,6 +500,17 @@ html{scroll-behavior:smooth}
     <p class="da">Behind the rumors is a vast medieval encyclopedia of the science of letters, the divine names, the lunar mansions, and number itself — the same sciences carried in <i>al-Sirr al-Jalīl</i>, at cathedral scale. This edition opens the chambers of <b>study</b>: every square rebuilt and proven live, every claim checked against the arithmetic. And it keeps the operative chambers <b>sealed</b> — studied as history, never handed out as instruction. That is not timidity. It is the ādāb the masters themselves demanded.</p>
   </div>
 </div></header>
+
+<section id="orbit3d" style="padding:70px 0 10px"><div class="container">
+  <div class="eyebrow">فلك المعارف</div>
+  <h2 class="sec-title">The Wheel of Chambers</h2>
+  <div class="sec-sub">drag to turn the wheel &middot; click any chamber to enter it</div>
+  <div class="orbit-stage" id="orbitStage" aria-label="3D navigation wheel of chambers">
+    <div class="orbit-ring" id="orbitRing"></div>
+    <div class="orbit-core"><div class="orbit-core-glow"></div></div>
+  </div>
+  <div class="orbit-hint">drag left or right &middot; or use the arrows</div>
+</div></section>
 
 <section id="start" style="padding-top:60px"><div class="container">
   <div class="eyebrow">ابدأ هنا</div>
@@ -1788,6 +1869,150 @@ const NABI_NAMES=[
     tick();
   }
   }catch(e){ console.warn('premium layer error', e); }
+})();
+</script>
+
+<script>
+(function(){
+  try{
+  var stage = document.getElementById('orbitStage');
+  var ring = document.getElementById('orbitRing');
+  if(!stage || !ring) return;
+
+  var CHAMBERS = [
+    {id:'start',ar:'ابدأ هنا',en:'Start'},
+    {id:'kitab',ar:'الكتاب',en:'Book'},
+    {id:'huruf',ar:'الفصل الأول',en:'Letters'},
+    {id:'manazil',ar:'المنازل',en:'Mansions'},
+    {id:'asma',ar:'الأسماء',en:'Names'},
+    {id:'sifat',ar:'الحقائق',en:'Attributes'},
+    {id:'basmala',ar:'البسملة',en:'Basmala'},
+    {id:'umm',ar:'أم الكتاب',en:'Fatiha'},
+    {id:'fawatih',ar:'الفواتح',en:'Openings'},
+    {id:'hisn',ar:'الدروع',en:'Shields'},
+    {id:'qisas',ar:'القصص',en:'Stories'},
+    {id:'nabi',ar:'الشمائل',en:'Prophet'},
+    {id:'tales',ar:'حكايات',en:'Tales'},
+    {id:'sabaa',ar:'السبعة',en:'The Seven'},
+    {id:'awfaq',ar:'الطلسمات والأوفاق',en:'Awfaq'},
+    {id:'gallery',ar:'المعرض',en:'Gallery'},
+    {id:'rasail',ar:'الرسالتان',en:'Treatises'},
+    {id:'fihrist',ar:'الخريطة',en:'Map'},
+    {id:'glossary',ar:'المسرد',en:'Glossary'},
+    {id:'method',ar:'المنهج',en:'Method'}
+  ];
+
+  var N = CHAMBERS.length;
+  var step = 360 / N;
+  function radius(){
+    var w = window.innerWidth;
+    if(w < 600) return 190;
+    if(w < 900) return 260;
+    return 360;
+  }
+
+  var nodes = CHAMBERS.map(function(ch, i){
+    var el = document.createElement('div');
+    el.className = 'orbit-node';
+    el.setAttribute('data-id', ch.id);
+    el.setAttribute('role','button');
+    el.setAttribute('tabindex','0');
+    el.innerHTML = '<span class="on-ar" lang="ar">'+ch.ar+'</span><span class="on-en">'+ch.en+'</span>';
+    ring.appendChild(el);
+    return { el: el, angle: i*step, id: ch.id };
+  });
+
+  var rotation = 0;
+  var dragging = false;
+  var startX = 0, startRotation = 0, moved = 0;
+  var lastInteraction = Date.now();
+
+  function render(){
+    var r = radius();
+    ring.style.transform = 'rotateY('+rotation+'deg)';
+    var best = null, bestCos = -Infinity;
+    nodes.forEach(function(n){
+      var total = (rotation + n.angle) * Math.PI/180;
+      var c = Math.cos(total);
+      var op = 0.32 + 0.68 * ((c+1)/2);
+      var sc = 0.72 + 0.34 * ((c+1)/2);
+      n.el.style.opacity = op.toFixed(2);
+      n.el.style.zIndex = Math.round((c+1)*100);
+      n.el.style.transform = 'rotateY('+n.angle+'deg) translateZ('+r+'px) scale('+sc.toFixed(2)+')';
+      if(c > bestCos){ bestCos = c; best = n; }
+    });
+    nodes.forEach(function(n){ n.el.classList.toggle('front', n===best); });
+  }
+  render();
+  window.addEventListener('resize', render);
+
+  function onDown(e){
+    dragging = true; moved = 0;
+    startX = (e.touches? e.touches[0].clientX : e.clientX);
+    startRotation = rotation;
+    ring.classList.add('dragging');
+    lastInteraction = Date.now();
+  }
+  function onMove(e){
+    if(!dragging) return;
+    var x = (e.touches? e.touches[0].clientX : e.clientX);
+    var dx = x - startX;
+    moved = Math.max(moved, Math.abs(dx));
+    rotation = startRotation + dx * 0.35;
+    render();
+  }
+  function onUp(e){
+    if(!dragging) return;
+    dragging = false;
+    ring.classList.remove('dragging');
+    lastInteraction = Date.now();
+    if(moved < 6){
+      var target = e.target && e.target.closest ? e.target.closest('.orbit-node') : null;
+      if(target){
+        var id = target.getAttribute('data-id');
+        if(id) location.hash = '#'+id;
+      }
+    }
+  }
+
+  stage.addEventListener('mousedown', onDown);
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', onUp);
+  stage.addEventListener('touchstart', onDown, {passive:true});
+  window.addEventListener('touchmove', onMove, {passive:true});
+  window.addEventListener('touchend', onUp);
+
+  nodes.forEach(function(n){
+    n.el.addEventListener('keydown', function(e){
+      if(e.key==='Enter' || e.key===' '){ e.preventDefault(); location.hash = '#'+n.id; }
+    });
+  });
+
+  var arrowLeft = document.createElement('div');
+  arrowLeft.className = 'orbit-arrow left'; arrowLeft.textContent = String.fromCharCode(8249);
+  arrowLeft.setAttribute('role','button'); arrowLeft.setAttribute('aria-label','rotate wheel left'); arrowLeft.setAttribute('tabindex','0');
+  var arrowRight = document.createElement('div');
+  arrowRight.className = 'orbit-arrow right'; arrowRight.textContent = String.fromCharCode(8250);
+  arrowRight.setAttribute('role','button'); arrowRight.setAttribute('aria-label','rotate wheel right'); arrowRight.setAttribute('tabindex','0');
+  stage.appendChild(arrowLeft); stage.appendChild(arrowRight);
+  function stepRotate(dir){ rotation += dir*step; lastInteraction = Date.now(); render(); }
+  arrowLeft.addEventListener('click', function(){ stepRotate(-1); });
+  arrowRight.addEventListener('click', function(){ stepRotate(1); });
+  arrowLeft.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); stepRotate(-1); } });
+  arrowRight.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); stepRotate(1); } });
+
+  var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduceMotion){
+    function idle(){
+      if(!dragging && Date.now() - lastInteraction > 2200){
+        rotation += 0.045;
+        render();
+      }
+      requestAnimationFrame(idle);
+    }
+    requestAnimationFrame(idle);
+  }
+  }catch(e){ console.warn('orbit3d error', e); }
 })();
 </script>
 </body>
