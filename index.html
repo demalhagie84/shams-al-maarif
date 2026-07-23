@@ -2113,9 +2113,13 @@ const NABI_NAMES=[
 (function(){
   var backdrop = document.getElementById('lightboxBackdrop');
   if(!backdrop) return;
-  var current = null;
+  var current = null, originalParent = null, originalNext = null;
   function closeZoom(){
-    if(current){ current.classList.remove('zoomed'); current = null; }
+    if(current){
+      current.classList.remove('zoomed');
+      if(originalParent){ originalParent.insertBefore(current, originalNext); }
+      current = null; originalParent = null; originalNext = null;
+    }
     backdrop.classList.remove('show');
     document.body.classList.remove('lightbox-open');
   }
@@ -2124,7 +2128,10 @@ const NABI_NAMES=[
     if(sw){
       if(sw.classList.contains('zoomed')){ closeZoom(); }
       else {
-        if(current) current.classList.remove('zoomed');
+        if(current) closeZoom();
+        originalParent = sw.parentNode;
+        originalNext = sw.nextSibling;
+        document.body.appendChild(sw);
         sw.classList.add('zoomed');
         current = sw;
         backdrop.classList.add('show');
