@@ -463,10 +463,53 @@ html{scroll-behavior:smooth}
 .top::after{content:'';position:absolute;left:0;right:0;bottom:-10px;height:10px;pointer-events:none;
   background:linear-gradient(180deg,#00000030,transparent);opacity:0;transition:opacity .4s}
 .top.scrolled::after{opacity:1}
+
+/* ═══════════ Gallery lightbox / zoom ═══════════ */
+.stagewrap{cursor:zoom-in;transition:box-shadow .3s var(--ease)}
+.stagewrap::after{content:"⤢";position:absolute;top:4px;right:4px;width:22px;height:22px;display:flex;align-items:center;justify-content:center;background:#00000088;border:1px solid #f2a93b55;border-radius:3px;color:var(--gold);font-size:12px;opacity:0;transition:opacity .25s var(--ease);pointer-events:none}
+.stagewrap:hover::after{opacity:1}
+.stagewrap.zoomed{position:fixed!important;top:50%;left:50%;transform:translate(-50%,-50%) scale(1.9);z-index:9999;box-shadow:0 0 90px #000000dd,0 0 50px #f2a93b3d;cursor:zoom-out}
+.stagewrap.zoomed::after{content:"✕ close";width:auto;padding:0 10px;top:-32px;right:0;opacity:1;font-family:var(--mono);font-size:10px;letter-spacing:.08em;background:transparent;border:none}
+#lightboxBackdrop{position:fixed;inset:0;background:#050302cc;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);z-index:9998;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+#lightboxBackdrop.show{opacity:1;pointer-events:auto}
+body.lightbox-open{overflow:hidden}
+@media(max-width:700px){.stagewrap.zoomed{transform:translate(-50%,-50%) scale(1.15)}}
+@media(prefers-reduced-motion:reduce){.stagewrap.zoomed{transition:none}}
+
+/* ═══════════ Per-chamber accent glyphs ═══════════ */
+#start .eyebrow::before{content:"✺  ";color:var(--sun)}
+#kitab .eyebrow::before{content:"❖  ";color:var(--lapis)}
+#huruf .eyebrow::before{content:"✎  ";color:var(--gold)}
+#manazil .eyebrow::before{content:"☽  ";color:var(--lapis)}
+#asma .eyebrow::before{content:"✧  ";color:var(--sun)}
+#sifat .eyebrow::before{content:"⟡  ";color:var(--sage)}
+#basmala .eyebrow::before{content:"✦  ";color:var(--gold)}
+#umm .eyebrow::before{content:"◈  ";color:var(--brass)}
+#fawatih .eyebrow::before{content:"✶  ";color:var(--sun)}
+#hisn .eyebrow::before{content:"◆  ";color:var(--warn)}
+#qisas .eyebrow::before{content:"✿  ";color:var(--sage)}
+#nabi .eyebrow::before{content:"✪  ";color:var(--gold)}
+#tales .eyebrow::before{content:"❋  ";color:var(--brass)}
+#sabaa .eyebrow::before{content:"✷  ";color:var(--sun)}
+#awfaq .eyebrow::before{content:"✵  ";color:var(--lapis)}
+#gallery .eyebrow::before{content:"▦  ";color:var(--sage)}
+#rasail .eyebrow::before{content:"❧  ";color:var(--brass)}
+#fihrist .eyebrow::before{content:"⟐  ";color:var(--gold)}
+#glossary .eyebrow::before{content:"✽  ";color:var(--sun)}
+#method .eyebrow::before{content:"✹  ";color:var(--warn)}
+
+/* ═══════════ Mobile nav: horizontal scroll strip instead of tall wrap ═══════════ */
+@media(max-width:640px){
+  nav.top .row{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:9px 0}
+  nav.top .row::-webkit-scrollbar{display:none}
+  nav.top a.lnk{flex:0 0 auto;padding:7px 9px;font-size:10.5px}
+  nav.top a.give{margin-left:8px;flex:0 0 auto}
+  nav.top .brand{flex:0 0 auto}
+}
 </style>
 </head>
 <body>
-<div id="toTop" role="button" tabindex="0" aria-label="scroll to top">↑</div>
+<div id="toTop" role="button" tabindex="0" aria-label="scroll to top">↑</div><div id="lightboxBackdrop" aria-hidden="true"></div>
 <nav class="top"><div class="container row">
   <a class="brand" href="#top">Shams <b>al-Maʿārif</b></a>
   <a class="lnk" href="#start">Start</a>
@@ -1953,7 +1996,7 @@ const NABI_NAMES=[
 
   var rotation = 0;
   var dragging = false;
-  var startX = 0, startRotation = 0, moved = 0;
+  var startX = 0, startY = 0, startRotation = 0, moved = 0, lockDir = null;
   var lastInteraction = Date.now();
 
   function render(){
@@ -1976,8 +2019,9 @@ const NABI_NAMES=[
   window.addEventListener('resize', render);
 
   function onDown(e){
-    dragging = true; moved = 0;
+    dragging = true; moved = 0; lockDir = null;
     startX = (e.touches? e.touches[0].clientX : e.clientX);
+    startY = (e.touches? e.touches[0].clientY : e.clientY);
     startRotation = rotation;
     ring.classList.add('dragging');
     lastInteraction = Date.now();
@@ -1985,7 +2029,10 @@ const NABI_NAMES=[
   function onMove(e){
     if(!dragging) return;
     var x = (e.touches? e.touches[0].clientX : e.clientX);
-    var dx = x - startX;
+    var y = (e.touches? e.touches[0].clientY : e.clientY);
+    var dx = x - startX, dy = y - startY;
+    if(lockDir===null && (Math.abs(dx)>6 || Math.abs(dy)>6)){ lockDir = Math.abs(dx)>Math.abs(dy) ? 'x' : 'y'; }
+    if(lockDir==='y') return;
     moved = Math.max(moved, Math.abs(dx));
     rotation = startRotation + dx * 0.35;
     render();
@@ -2059,6 +2106,35 @@ const NABI_NAMES=[
   btn.addEventListener('click', goTop);
   btn.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); goTop(); } });
   }catch(e){ console.warn('toTop error', e); }
+})();
+</script>
+
+<script>
+(function(){
+  var backdrop = document.getElementById('lightboxBackdrop');
+  if(!backdrop) return;
+  var current = null;
+  function closeZoom(){
+    if(current){ current.classList.remove('zoomed'); current = null; }
+    backdrop.classList.remove('show');
+    document.body.classList.remove('lightbox-open');
+  }
+  document.addEventListener('click', function(e){
+    var sw = e.target.closest ? e.target.closest('.stagewrap') : null;
+    if(sw){
+      if(sw.classList.contains('zoomed')){ closeZoom(); }
+      else {
+        if(current) current.classList.remove('zoomed');
+        sw.classList.add('zoomed');
+        current = sw;
+        backdrop.classList.add('show');
+        document.body.classList.add('lightbox-open');
+      }
+      return;
+    }
+    if(e.target === backdrop){ closeZoom(); }
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeZoom(); });
 })();
 </script>
 </body>
