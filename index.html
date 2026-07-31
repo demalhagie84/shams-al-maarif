@@ -535,7 +535,11 @@ nav.top a.lnk::after{content:"";position:absolute;left:10px;right:10px;bottom:3p
 nav.top a.lnk:hover::after,nav.top a.lnk.active::after{transform:scaleX(1)}
 nav.top a.give{border-radius:980px;padding:8px 16px}
 a:focus-visible,button:focus-visible,.btn:focus-visible,input:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--sun);outline-offset:3px;border-radius:8px}
-img,svg{max-width:100%;height:auto}
+.cta{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 26px;border-radius:980px;transition:transform .3s var(--ease),background-color .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease),color .3s var(--ease)}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px #00000055}
+  .cta:active{transform:translateY(0) scale(.985)}
+  nav.top a.give{position:sticky;right:0;background:#0a0704f2;box-shadow:-16px 0 18px #0a0704f2}
+  img,svg{max-width:100%;height:auto}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
