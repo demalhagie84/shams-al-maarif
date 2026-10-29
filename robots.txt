@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://shamsalmaarif.org/sitemap.xml
+Disallow: /
