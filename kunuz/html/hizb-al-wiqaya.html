@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ḥizb al-Wiqāya · Ibn al-ʿArabī (q)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#f4ead2;
+    --ink:#33261a;
+    --ink-soft:#6f5c43;
+    --gold:#a9791c;
+    --gold-bright:#c99e3f;
+    --lapis:#1e3c60;
+    --lapis-deep:#14293f;
+    --green:#1d6042;
+    --crimson:#9c2b1f;
+    --rule:rgba(169,121,28,.55);
+    --rule-faint:rgba(111,92,67,.22);
+    --surround:#211a12;
+    --ar-scale:1;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:radial-gradient(1200px 600px at 50% -10%, #2c231884, transparent 70%), var(--surround);
+    color:var(--ink);
+    font-family:"EB Garamond", Georgia, serif;
+    line-height:1.6;
+    padding:64px 18px 60px;
+  }
+
+  /* controls */
+  .controls{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 16px;background:rgba(28,22,15,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(169,121,28,.35)}
+  .controls .brand{font-family:"Cormorant Garamond",serif;color:var(--gold-bright);letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .controls .brand b{color:#e9d9a9;font-weight:600}
+  .tools{display:flex;align-items:center;gap:6px;flex:0 0 auto}
+  .tools button{font-family:"Cormorant Garamond",serif;font-size:.82rem;font-weight:600;letter-spacing:.03em;color:#e9d9a9;background:transparent;border:1px solid rgba(201,158,63,.5);border-radius:2px;padding:5px 10px;cursor:pointer;transition:background .18s,color .18s,border-color .18s}
+  .tools button:hover{background:rgba(201,158,63,.16)}
+  .tools button:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
+  .tools button[aria-pressed="true"]{background:var(--gold);color:#241a0a;border-color:var(--gold)}
+  .tools .sz{width:30px;padding:5px 0;text-align:center}
+  .tools .grp{display:flex;gap:3px}
+
+  /* page / frame */
+  .page{max-width:770px;margin:0 auto;background:var(--ground);position:relative;padding:clamp(26px,5vw,54px) clamp(20px,5vw,50px) clamp(30px,5vw,54px);border:3px double var(--gold);box-shadow:0 30px 70px -20px #000a,0 6px 20px #0006;isolation:isolate}
+  .page::before{content:"";position:absolute;inset:7px;pointer-events:none;border:1px solid rgba(30,60,96,.55)}
+  .page::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;opacity:.5;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E")}
+  @media (prefers-reduced-motion:no-preference){
+    .page{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+    @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  }
+
+  /* headpiece */
+  .unwan{text-align:center;padding-bottom:6px}
+  .crest{display:block;margin:0 auto 6px;width:236px;height:auto}
+  .eyebrow{font-family:"Cormorant Garamond",serif;text-transform:uppercase;letter-spacing:.34em;font-size:.72rem;font-weight:600;color:var(--gold);margin:2px 0 6px;padding-inline-start:.34em}
+  .ar-title{font-family:"Aref Ruqaa","Amiri",serif;font-weight:700;color:var(--crimson);font-size:clamp(2.7rem,11vw,4.4rem);line-height:1.15;margin:.06em 0 .12em;direction:rtl;text-shadow:0 1px 0 #fff6}
+  .en-title{font-family:"Cormorant Garamond",serif;font-weight:500;font-style:italic;color:var(--lapis);font-size:clamp(1.3rem,4.5vw,1.7rem);letter-spacing:.02em}
+  .byline{margin-top:.5em;font-size:1.02rem;color:var(--ink)}
+  .byline span{color:var(--ink-soft);font-size:.82rem;white-space:nowrap}
+  .note{max-width:46ch;margin:.85em auto 0;font-style:italic;color:var(--ink-soft);font-size:.96rem;line-height:1.55}
+  .topmark{margin-top:16px;font-family:"Cormorant Garamond",serif}
+  .topmark .src{letter-spacing:.06em;color:var(--ink-soft);margin:0;font-size:.98rem}
+  .topmark .src b{color:var(--gold)}
+  .topmark .links{letter-spacing:.12em;font-size:.8rem;color:var(--lapis);text-transform:lowercase;margin:2px 0 0}
+
+  /* divider (rub el hizb) */
+  .divider{display:flex;align-items:center;gap:16px;margin:22px auto;color:var(--gold)}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--rule),transparent)}
+  .divider span{font-family:"Amiri",serif;font-size:1.5rem;line-height:1;color:var(--gold);text-shadow:0 1px 0 #fff8}
+
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;margin:4px auto 2px;padding:12px 14px;background:linear-gradient(#fbf4e2aa,#f1e5c6aa);border-block:1px solid var(--rule-faint);font-family:"Cormorant Garamond",serif;font-size:.9rem;letter-spacing:.02em}
+  .key{display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
+  .sw{width:15px;height:15px;border-radius:3px;display:inline-block;box-shadow:inset 0 0 0 1px #0002}
+  .sw.nm{background:var(--gold)} .sw.pt{background:var(--crimson)}
+  .sw.qr{background:var(--green)} .sw.df{background:var(--ink)}
+
+  /* basmala */
+  .basmala{text-align:center;margin:26px 0 8px}
+  .basmala .ar{font-family:"Amiri",serif;direction:rtl;color:var(--green);font-size:calc(2.1rem*var(--ar-scale));line-height:1.7}
+  .basmala .en{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--green);font-size:1.05rem;margin-top:4px}
+
+  /* movements */
+  .litany{margin-top:8px}
+  .mv{padding:20px 0;border-bottom:1px solid var(--rule-faint)}
+  .mv:last-child{border-bottom:0}
+  .ar-row{display:flex;flex-direction:row;align-items:flex-start;gap:14px;direction:rtl}
+  .marker{flex:0 0 auto;margin-top:.35em}
+  .marker .disc{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%, #27496f, var(--lapis-deep));border:1.5px solid var(--gold);box-shadow:0 1px 3px #0004, inset 0 0 0 3px rgba(169,121,28,.18);font-family:"Amiri",serif;color:var(--gold-bright);font-size:1rem;font-weight:700;line-height:1}
+  .ar{flex:1 1 auto;direction:rtl;text-align:right;font-family:"Amiri",serif;color:var(--ink);font-size:calc(1.62rem*var(--ar-scale));line-height:2.2;word-spacing:.02em}
+  .nm{color:var(--gold);font-weight:700}
+  .pt{color:var(--crimson);font-weight:700}
+  .qr{color:var(--green);unicode-bidi:isolate}
+  .en{margin:13px 0 0;padding-inline-start:16px;border-inline-start:2px solid var(--gold);color:var(--ink-soft);font-size:1.06rem;line-height:1.6;max-width:62ch}
+  .en em{color:var(--green);font-style:italic}
+
+  body.hide-tr .en{display:none}
+  body.hide-tr .mv{padding:14px 0}
+
+  /* coda blocks */
+  .coda{margin:6px 0;padding:20px 0}
+  .invoke{text-align:center;direction:rtl;font-family:"Amiri",serif}
+  .invoke .line{font-size:calc(1.9rem*var(--ar-scale));line-height:1.9;color:var(--gold);font-weight:700}
+  .coda .en{border:0;padding:0;margin:14px auto 0;text-align:center;max-width:58ch;color:var(--ink-soft);font-style:italic}
+
+  .supp{background:linear-gradient(#fbf3df,#f3e7c8);border:1px solid var(--rule);border-radius:2px;padding:22px clamp(16px,4vw,30px);margin:8px 0}
+  .supp .lbl{font-family:"Cormorant Garamond",serif;text-transform:uppercase;letter-spacing:.28em;font-size:.72rem;color:var(--gold);text-align:center;margin-bottom:14px}
+  .supp .ar{text-align:right;font-size:calc(1.5rem*var(--ar-scale));line-height:2.25}
+  .supp .ar + .ar{margin-top:14px}
+  .supp .en{border:0;padding:0;max-width:none;margin-top:12px;color:var(--ink-soft);font-style:italic}
+  .supp .en + .ar{margin-top:20px;padding-top:18px;border-top:1px solid var(--rule-faint)}
+
+  .seal{text-align:center;padding-top:6px}
+  .seal .ar{text-align:center;direction:rtl;font-family:"Amiri",serif;font-size:calc(1.42rem*var(--ar-scale));line-height:2.1;color:var(--ink)}
+  .seal .en{border:0;padding:0;margin:12px auto 0;max-width:56ch;text-align:center;color:var(--ink-soft);font-style:italic}
+
+  /* colophon */
+  .colophon{text-align:center;margin-top:12px}
+  .colophon .fatiha{font-style:italic;color:var(--ink);max-width:48ch;margin:0 auto 12px;font-size:1.02rem}
+  .colophon .src{font-family:"Cormorant Garamond",serif;letter-spacing:.06em;color:var(--ink-soft);margin:2px 0}
+  .colophon .src b{color:var(--gold)}
+  .colophon .links{font-family:"Cormorant Garamond",serif;letter-spacing:.12em;font-size:.82rem;color:var(--lapis);text-transform:lowercase}
+
+  @media (max-width:480px){
+    body{padding-top:58px}
+    .ar{font-size:calc(1.42rem*var(--ar-scale))}
+    .controls .brand{max-width:38vw}
+  }
+
+  @media print{
+    body{background:#fff;padding:0}
+    .controls{display:none}
+    .page{box-shadow:none;border-color:#8a6316;max-width:none}
+    .mv{break-inside:avoid}
+    .supp,.seal,.coda{break-inside:avoid}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <div class="brand">۞ <b>Ḥizb al-Wiqāya</b> — Ibn al-ʿArabī (q)</div>
+  <div class="tools">
+    <button id="trBtn" aria-pressed="false" title="Show or hide the English translation">Translation</button>
+    <div class="grp">
+      <button class="sz" id="szDown" aria-label="Decrease Arabic size">A−</button>
+      <button class="sz" id="szUp" aria-label="Increase Arabic size">A+</button>
+    </div>
+  </div>
+</div>
+
+<main class="page">
+  <header class="unwan">
+    <svg class="crest" viewBox="0 0 236 96" role="img" aria-label="Illuminated star medallion">
+      <g stroke="#a9791c" stroke-width="1.4" fill="none" opacity=".9">
+        <path d="M14 48 H78"/><path d="M158 48 H222"/>
+        <circle cx="9" cy="48" r="3.4" fill="#a9791c" stroke="none"/>
+        <circle cx="227" cy="48" r="3.4" fill="#a9791c" stroke="none"/>
+        <path d="M78 48 q8 -9 16 0 q-8 9 -16 0Z" fill="#c99e3f" stroke="none"/>
+        <path d="M158 48 q-8 -9 -16 0 q8 9 16 0Z" fill="#c99e3f" stroke="none"/>
+      </g>
+      <circle cx="118" cy="48" r="34" fill="#14293f" stroke="#a9791c" stroke-width="2"/>
+      <circle cx="118" cy="48" r="27.5" fill="none" stroke="#a9791c" stroke-width="1" opacity=".65"/>
+      <g fill="none" stroke="#c99e3f" stroke-width="2" stroke-linejoin="round">
+        <rect x="98" y="28" width="40" height="40"/>
+        <rect x="98" y="28" width="40" height="40" transform="rotate(45 118 48)"/>
+      </g>
+      <circle cx="118" cy="48" r="4.4" fill="#a9791c"/>
+    </svg>
+    <div class="eyebrow">Ḥizb of al-Shaykh al-Akbar</div>
+    <h1 class="ar-title" dir="rtl" lang="ar">حِزْبُ الْوِقَايَةِ</h1>
+    <div class="en-title">The Litany of Preservation</div>
+    <div class="byline">Muḥyī al-Dīn Ibn al-ʿArabī (q) <span>· 560–638 AH / 1165–1240 CE</span></div>
+    <p class="note">Recommended within the Naqshbandī ʿAliyya order by Mawlānā Shaykh Nāẓim al-Ḥaqqānī and his successor Shaykh Meḥmet ʿĀdil (may Allah sanctify their secrets) as a daily wird — for protection, ascent, and every need.</p>
+    <div class="topmark">
+      <p class="src">A mobile-friendly khidma · <b>DhikrNotes</b></p>
+      <p class="links">t.me/DhikrNotes · youtube.com/princeamori</p>
+    </div>
+  </header>
+
+  <section class="legend" aria-label="Colour key">
+    <span class="key"><i class="sw nm"></i> Divine Names</span>
+    <span class="key"><i class="sw pt"></i> Invocation &amp; petition</span>
+    <span class="key"><i class="sw qr"></i> Qurʾānic verse</span>
+    <span class="key"><i class="sw df"></i> Attributes</span>
+  </section>
+
+  <div class="basmala">
+    <div class="ar" dir="rtl" lang="ar">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="en">In the Name of Allah, the All-Merciful, the Ever-Merciful.</div>
+  </div>
+
+  <section class="litany">
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">١</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">أَللّٰهُمَّ</span> <span class="nm">يَا حَيُّ يَا قَيُّوْمُ</span> بِكَ تَحَصَّنْتُ <span class="pt">فَاحْمِنِيْ</span> بِحِمَايَةِ كِفَايَةِ وِقَايَةِ حَقِيْقَةِ بُرْهَانِ حِرْزِ أَمَانِ <span class="qr">﴾بِسْمِ اللهِ﴿</span></div></div>
+        <p class="en">O Allah, O Ever-Living, O Self-Subsisting Sustainer — in You I take refuge, so protect me with the shelter, sufficiency, and safeguarding of the reality of the proof, the amulet of security: <em>In the Name of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٢</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَدْخِلْنِيْ</span> <span class="nm">يَا أَوَّلُ يَا آخِرُ</span> فِيْ مَكْنُوْنِ غَيْبِ سِرِّ دَائِرَةِ كَنْزِ <span class="qr">﴾مَا شَآءَ اللهُ لَا قُوَّةَ إِلَّا بِاللهِ﴿</span></div></div>
+        <p class="en">And admit me, O First, O Last, into the guarded concealment — the unseen, the secret of the encompassing circle of the treasure: <em>Whatever Allah wills; there is no power save through Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٣</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَسْبِلِ</span> <span class="pt">أَللّٰهُمَّ</span> عَلَيَّ <span class="nm">يَا حَلِيْمُ يَا سَتَّارُ</span> كَنَفَ سِتْرِ حِجَابِ زِيَانَةِ صِيَانَةِ نَجَاةِ <span class="qr">﴾وَاعْتَصِمُوْا بِحَبْلِ اللهِ﴿</span></div></div>
+        <p class="en">And drape over me, O Allah, O Most Forbearing, O Ever-Veiling, the shelter of the screen, the veil of adornment, preservation, and deliverance: <em>And hold fast, all of you, to the rope of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٤</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَابْنِ</span> <span class="nm">يَا مُحِيْطُ يَا قَادِرُ</span> عَلَيَّ سُوْرَ أَمَانِ إِحَاطَةِ مَجْدِ سُرَادِقِ عِزِّ عَظَمَةِ <span class="qr">﴾ذٰلِكَ خَيْرٌ ذٰلِكَ مِنْ آيَاتِ اللهِ﴿</span></div></div>
+        <p class="en">And build around me, O All-Encompassing, O All-Determining, a rampart of security — of encompassment, of glory, the pavilion of might and magnificence: <em>That is better; that is among the signs of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٥</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَعِذْنِيْ</span> <span class="nm">يَا رَقِيْبُ يَا مُجِيْبُ</span> <span class="pt">وَاحْرُسْنِيْ</span> فِيْ نَفْسِيْ وَدِيْنِيْ وَأَهْلِيْ وَمَالِيْ وَوَالِدَيَّ وَوَلَدِيْ بِكَلَاءَةِ إِعَاذَةِ إِغَاثَةِ <span class="qr">﴾وَلَيْسَ بِضَآرِّهِمْ شَيْءٌ إِلَّا بِإِذْنِ اللهِ﴿</span></div></div>
+        <p class="en">And grant me refuge, O Ever-Watchful, O All-Responsive, and guard me in my soul, my faith, my family, my wealth, my parents, and my child, with the warding of refuge and rescue: <em>Nothing can harm them except by the leave of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٦</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَقِنِيْ</span> <span class="nm">يَا مَانِعُ يَا دَافِعُ</span> بِأَسْمَآئِكَ وَآيَاتِكَ وَكَلِمَاتِكَ مِنْ شَرِّ الشَّيْطَانِ وَالسُّلْطَانِ وَالْإِنْسَانِ وَالْجَانِّ فَإِنْ ظَالِمٌ أَوْ جَبَّارٌ بَغَىٰ عَلَيَّ أَخَذَتْهُ <span class="qr">﴾غَاشِيَةٌ مِّنْ عَذَابِ اللهِ﴿</span></div></div>
+        <p class="en">And shield me, O Withholder of harm, O Repeller, by Your Names, Your signs, and Your words, from the evil of Shayṭān, of tyrant power, of humankind, and of the jinn; so should any wrongdoer or tyrant transgress against me, there shall overtake him <em>a shroud from the punishment of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٧</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَنَجِّنِيْ</span> <span class="nm">يَا مُذِلُّ يَا مُنْتَقِمُ</span> مِنْ عَبِيْدِكَ الظَّلَمَةِ الظَّالِمِيْنَ الْبَاغِيْنَ عَلَيَّ وَأَعْوَانِهِمْ فَإِنْ هَمَّ لِيْ أَحَدٌ مِّنْهُمْ بِسُوْءٍ خَذَلَهُ اللهُ بِأَيَةِ <span class="qr">﴾وَخَتَمَ عَلَىٰ سَمْعِهِ وَقَلْبِهِ وَجَعَلَ عَلَىٰ بَصَرِهِ غِشَاوَةً فَمَنْ يَّهْدِيْهِ مِنْ بَعْدِ اللهِ﴿</span></div></div>
+        <p class="en">And save me, O Abaser, O Avenger, from Your servants — the oppressors, the wrongdoers who transgress against me, and their abettors; and should any one of them intend me harm, Allah forsakes him, by the verse: <em>And Allah sealed his hearing and his heart and placed a covering over his sight — so who can guide him after Allah?</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٨</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَاكْفِنِيْ</span> <span class="nm">يَا قَابِضُ يَا قَهَّارُ</span> خَدِيْعَةَ مَكْرِهِمْ وَارْدُدْهُمْ عَنِّيْ مَذْمُوْمِيْنَ مَذْؤُوْمِيْنَ مَدْحُوْرِيْنَ بِتَسْخِيْرِ بِتَخْسِيْرِ تَجْسِيْرِ تَحْسِيْرِ تَغْيِيْرِ تَدْمِيْرِ تَكْدِيْرِ <span class="qr">﴾فَمَا كَانَ لَهُ مِنْ فِئَةٍ يَّنْصُرُوْنَهُ مِنْ دُوْنِ اللهِ﴿</span></div></div>
+        <p class="en">And suffice me, O Constrainer, O All-Subduing, against the deceit of their scheming; turn them back from me — disgraced, cast out, and driven off — by subjugation, dispossession, humbling, exhaustion, upheaval, ruin, and confounding: <em>And he had no host to help him besides Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٩</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَذِقْنِيْ</span> <span class="nm">يَا سُبُّوْحُ يَا قُدُّوْسُ</span> لَذَّةَ مُنَاجَاةِ <span class="qr">﴾أَقْبِلْ وَلَا تَخَفْ إِنَّكَ مِنَ الْآمِنِيْنَ فِيْ كَنَفِ اللهِ﴿</span> <span class="qr">﴾بِفَضْلِ اللهِ﴿</span></div></div>
+        <p class="en">And let me taste, O All-Glorified, O All-Holy, the sweetness of intimate discourse with You: <em>Draw near and do not fear — you are among those made safe, in the shelter of Allah</em> — <em>by the grace of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">١٠</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَذِقْهُمْ</span> <span class="nm">يَا ضَآرُّ يَا مُمِيْتُ</span> نَكَالَ وَبَالِ زَوَالِ <span class="qr">﴾فَقُطِعَ دَابِرُ الْقَوْمِ الَّذِيْنَ ظَلَمُوْا وَالْحَمْدُ لِلّٰهِ﴿</span></div></div>
+        <p class="en">And let them taste, O You who can bring harm, O Bringer of death, the retribution of doom and downfall: <em>So the last remnant of the people who did wrong was cut off — and all praise is for Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">١١</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَآمِنِّيْ</span> <span class="nm">يَا سَلَامُ يَا مُؤْمِنُ يَا مُهَيْمِنُ</span> صَوْلَةَ جَوْلَةَ دَوْلَةِ الْأَعْدَآءِ بِغَايَةِ بِدَايَةِ آيَةِ <span class="qr">﴾لَهُمُ الْبُشْرَىٰ فِي الْحَيَاةِ الدُّنْيَا وَفِي الْآخِرَةِ لَا تَبْدِيْلَ لِكَلِمَاتِ اللهِ﴿</span></div></div>
+        <p class="en">And make me secure, O Peace, O Granter of Safety, O Guardian-Overseer, from the assault, the onslaught, and the ascendancy of enemies — utterly, from the very outset, by the verse: <em>Theirs is the good tidings in the life of this world and in the Hereafter — there is no changing the words of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">١٢</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَتَوِّجْنِيْ</span> <span class="nm">يَا عَظِيْمُ يَا مُعِزُّ</span> بِتَاجِ مَهَابَةِ كِبْرِيَآءِ جَلَالِ سُلْطَانِ مَلَكُوْتِ عِزِّ عَظَمَةِ جَبَرُوْتِ <span class="qr">﴾وَلَا يَحْزُنْكَ قَوْلُهُمْ إِنَّ الْعِزَّةَ لِلّٰهِ﴿</span></div></div>
+        <p class="en">And crown me, O Magnificent, O Bestower of Honour, with the diadem of awe, grandeur, majesty, sovereignty, dominion, might, magnificence, and overwhelming power: <em>And let not their speech grieve you — indeed, all might belongs to Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">١٣</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَلْبِسْنِيْ</span> <span class="nm">يَا جَلِيْلُ يَا كَبِيْرُ</span> خِلْعَةَ جَلَالِ جَمَالِ كَمَالِ إِجْلَالِ إِكْمَالِ إِقْبَالِ <span class="qr">﴾فَلَمَّا رَأَيْنَهُ أَكْبَرْنَهُ وَقَطَّعْنَ أَيْدِيَهُنَّ وَقُلْنَ حَاشَ لِلّٰهِ﴿</span></div></div>
+        <p class="en">And robe me, O Majestic, O Most Great, in the mantle of majesty, beauty, perfection, exaltation, completion, and felicitous favour: <em>And when they saw him they exalted him, and cut their hands, and said: Allah be glorified!</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">١٤</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَلْقِ</span> <span class="nm">يَا عَزِيْزُ يَا وَدُوْدُ</span> عَلَيَّ مَحَبَّةً مِّنْكَ تَنْقَادُ وَتَخْضَعُ لِيْ بِهَا قُلُوْبُ جَمِيْعِ عِبَادِكَ بِالْمَحَبَّةِ وَالْمَعَزَّةِ وَالْمَوَدَّةِ مِنْ تَعْطِيْفِ تَلْطِيْفِ تَأْلِيْفِ <span class="qr">﴾يُحِبُّوْنَهُمْ كَحُبِّ اللهِ وَالَّذِيْنَ آمَنُوْا أَشَدُّ حُبًّا لِلّٰهِ﴿</span></div></div>
+        <p class="en">And cast upon me, O Almighty, O Most Loving, a love from Yourself, by which the hearts of all Your servants yield and bow to me in affection, honouring, and devotion — through tender inclining, gentling, and joining of hearts: <em>They love them as they should love Allah — but those who believe are stronger in love for Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">١٥</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَظْهِرْ</span> <span class="pt">أَللّٰهُمَّ</span> عَلَيَّ <span class="nm">يَا ظَاهِرُ يَا بَاطِنُ</span> آثَارَ أَسْرَارِ أَنْوَارِ <span class="qr">﴾يُحِبُّهُمْ وَيُحِبُّوْنَهُ أَذِلَّةٍ عَلَى الْمُؤْمِنِيْنَ أَعِزَّةٍ عَلَى الْكَافِرِيْنَ يُجَاهِدُوْنَ فِيْ سَبِيْلِ اللهِ﴿</span></div></div>
+        <p class="en">And manifest upon me, O Allah — O Outwardly Manifest, O Inwardly Hidden — the traces of the secrets of lights: <em>He loves them and they love Him — humble toward the believers, mighty against the deniers, striving in the way of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">١٦</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَوَجِّهْ</span> <span class="pt">أَللّٰهُمَّ</span> <span class="nm">يَا صَمَدُ يَا نُوْرُ</span> وَجْهِيَ بِصَفَآءِ جَمَالِ أُنْسِ إِشْرَاقِ <span class="qr">﴾فَإِنْ حَآجُّوْكَ فَقُلْ أَسْلَمْتُ وَجْهِيَ لِلّٰهِ﴿</span></div></div>
+        <p class="en">And turn my face, O Allah — O Eternal Refuge, O Light — with the purity of beauty, intimacy, and radiance: <em>So if they dispute with you, say: I have surrendered my face to Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">١٧</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَجَمِّلْنِيْ</span> <span class="nm">يَا جَمِيْلُ يَا بَدِيْعَ السَّمَاوَاتِ وَالْأَرْضِ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ</span> بِالْفَصَاحَةِ وَالْبَلَاغَةِ وَالْبَرَاعَةِ <span class="qr">﴾وَاحْلُلْ عُقْدَةً مِّنْ لِسَانِيْ يَفْقَهُوْا قَوْلِيْ﴿</span> بِرَأْفَةِ رَحْمَةِ رِقَّةٍ <span class="qr">﴾ثُمَّ تَلِيْنُ جُلُوْدُهُمْ وَقُلُوْبُهُمْ إِلَىٰ ذِكْرِ اللهِ﴿</span></div></div>
+        <p class="en">And beautify me, O Beautiful, O Originator of the heavens and the earth, O Possessor of Majesty and Honour, with eloquence, articulacy, and mastery of speech: <em>And loose the knot from my tongue, that they may understand my speech</em> — through tenderness, mercy, and gentleness: <em>then their skins and their hearts soften to the remembrance of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">١٨</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَقَلِّدْنِيْ</span> <span class="nm">يَا شَدِيْدَ الْبَطْشِ يَا جَبَّارُ</span> بِسَيْفِ الْهَيْبَةِ وَالْقُوَّةِ وَالشِّدَّةِ وَالْمَنَعَةِ مِنْ بَأْسِ جَبَرُوْتِ عِزَّةِ عَظَمَةِ <span class="qr">﴾وَمَا النَّصْرُ إِلَّا مِنْ عِنْدِ اللهِ﴿</span></div></div>
+        <p class="en">And gird me, O Severe in Might, O Compeller, with the sword of awe, strength, force, and invincibility — from the valour of Your overwhelming power, might, and magnificence: <em>And victory comes only from Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">١٩</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَدِمْ</span> عَلَيَّ <span class="nm">يَا بَاسِطُ يَا فَتَّاحُ</span> بَهْجَةَ مَسَرَّةِ <span class="qr">﴾رَبِّ اشْرَحْ لِيْ صَدْرِيْ وَيَسِّرْ لِيْ أَمْرِيْ﴿</span> بِلَطَآئِفِ عَطَآئِفِ عَوَاطِفِ عَوَارِفِ <span class="qr">﴾أَلَمْ نَشْرَحْ لَكَ صَدْرَكَ﴿</span> وَبِاشَآئِرِ بَشَآئِرِ <span class="qr">﴾وَيَوْمَئِذٍ يَّفْرَحُ الْمُؤْمِنُوْنَ بِنَصْرِ اللهِ﴿</span></div></div>
+        <p class="en">And make lasting upon me, O Expander, O Opener, the joy of gladness: <em>My Lord, expand for me my breast and ease for me my affair</em> — through subtle graces, gifts, tendernesses, and bestowals: <em>Did We not expand for you your breast?</em> — with tidings upon tidings: <em>And on that Day the believers will rejoice at the victory of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٢٠</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَنْزِلْ</span> <span class="pt">أَللّٰهُمَّ</span> <span class="nm">يَا لَطِيْفُ يَا رَؤُوْفُ</span> بِقَلْبِيَ الْإِيْمَانَ وَالْاِطْمِئْنَانَ وَالسَّكِيْنَةَ وَالْوَقَارَ لِأَكُوْنَ مِنَ <span class="qr">﴾الَّذِيْنَ آمَنُوْا وَتَطْمَئِنُّ قُلُوْبُهُمْ بِذِكْرِ اللهِ﴿</span></div></div>
+        <p class="en">And send down, O Allah — O Subtly Kind, O Most Compassionate — into my heart faith, tranquil assurance, serenity, and dignity, that I may be among <em>those who believe and whose hearts find rest in the remembrance of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٢١</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَفْرِغْ</span> عَلَيَّ <span class="nm">يَا صَبُوْرُ يَا شَكُوْرُ</span> صَبْرَ الَّذِيْنَ تَدَرَّعُوْا بِثَبَاتِ يَقِيْنِ تَمْكِيْنِ <span class="qr">﴾كَمْ مِّنْ فِئَةٍ قَلِيْلَةٍ غَلَبَتْ فِئَةً كَثِيْرَةً بِإِذْنِ اللهِ﴿</span></div></div>
+        <p class="en">And pour upon me, O Most Patient, O Most Appreciative, the steadfastness of those who armed themselves with the firmness of certainty and stability: <em>How many a small band has overcome a great host by the leave of Allah!</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٢٢</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَاحْفَظْنِيْ</span> <span class="nm">يَا حَفِيْظُ يَا وَكِيْلُ</span> مِنْ بَيْنِ يَدَيَّ وَمِنْ خَلْفِيْ وَعَنْ يَّمِيْنِيْ وَعَنْ شِمَالِيْ وَمِنْ فَوْقِيْ وَمِنْ تَحْتِيْ بِوُجُوْدِ شُهُوْدِ جُنُوْدِ <span class="qr">﴾لَهُ مُعَقِّبَاتٌ مِّنْ بَيْنِ يَدَيْهِ وَمِنْ خَلْفِهِ يَحْفَظُوْنَهُ مِنْ أَمْرِ اللهِ﴿</span></div></div>
+        <p class="en">And guard me, O All-Preserving, O Trustee, from before me and behind me, from my right and my left, from above me and beneath me, by the presence of witnessing hosts: <em>He has attendant angels before him and behind him who guard him by the command of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٢٣</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَثَبِّتْ</span> <span class="pt">أَللّٰهُمَّ</span> <span class="nm">يَا قَائِمُ يَا دَائِمُ</span> قَدَمَيَّ كَمَا ثَبَّتَّ الْقَآئِلَ <span class="qr">﴾وَكَيْفَ أَخَافُ مَآ أَشْرَكْتُمْ وَلَا تَخَافُوْنَ أَنَّكُمْ أَشْرَكْتُمْ بِاللهِ﴿</span></div></div>
+        <p class="en">And make firm, O Allah — O Ever-Standing, O Everlasting — my feet, as You made firm the one who declared: <em>And how should I fear what you associate, while you fear not that you have associated with Allah?</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٢٤</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَانْصُرْنِيْ</span> <span class="nm">يَا نِعْمَ الْمَوْلَىٰ وَيَا نِعْمَ النَّصِيْرُ</span> عَلَىٰ أَعْدَائِيْ نَصْرَ الَّذِيْ قِيْلَ لَهُ <span class="qr">﴾أَتَتَّخِذُنَا هُزُوًا قَالَ أَعُوْذُ بِاللهِ﴿</span></div></div>
+        <p class="en">And help me, O Best of Masters, O Best of Helpers, against my enemies — with the help of the one to whom it was said: <em>Do you take us in mockery? He said: I seek refuge in Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٢٥</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَيِّدْنِيْ</span> <span class="nm">يَا طَالِبُ يَا غَالِبُ</span> بِتَأْيِيْدِ نَبِيِّكَ سَيِّدِنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ الْمُؤَيَّدِ بِتَعْزِيْزِ تَوْقِيْرِ <span class="qr">﴾إِنَّا أَرْسَلْنَاكَ شَاهِدًا وَّمُبَشِّرًا وَّنَذِيْرًا لِتُؤْمِنُوْا بِاللهِ﴿</span></div></div>
+        <p class="en">And reinforce me, O Seeker, O Ever-Victorious, with the reinforcement of Your Prophet, our master Muḥammad — may Allah bless him and grant him peace — the one supported with honour and reverence: <em>Indeed We have sent you as a witness, a bearer of good tidings, and a warner, that you may believe in Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٢٦</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَاكْفِنِيْ</span> <span class="nm">يَا كَافِيْ يَا شَافِيْ</span> شَرَّ الْأَعْدَآءِ وَالْأَسْوَآءِ بِعَوَائِدِ فَوَائِدِ فَرَائِدِ <span class="qr">﴾لَوْ أَنْزَلْنَا هَذَا الْقُرْآنَ عَلَىٰ جَبَلٍ لَّرَأَيْتَهُ خَاشِعًا مُّتَصَدِّعًا مِّنْ خَشْيَةِ اللهِ﴿</span></div></div>
+        <p class="en">And suffice me, O All-Sufficing, O Healer, against the evil of enemies and of calamities — by recurring benefits, gains, and singular graces: <em>Had We sent down this Qurʾān upon a mountain, you would have seen it humbled, split asunder from the awe of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٢٧</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَامْنُنْ</span> عَلَيَّ <span class="nm">يَا وَهَّابُ يَا رَزَّاقُ</span> بِحُصُوْلِ وُصُوْلِ قَبُوْلِ تَدْبِيْرِ تَيْسِيْرِ تَسْخِيْرِ <span class="qr">﴾كُلُوْا وَاشْرَبُوْا مِنْ رِّزْقِ اللهِ﴿</span></div></div>
+        <p class="en">And bestow upon me, O Ever-Giving, O Provider, the attainment, arrival, and acceptance of ordering, easing, and disposing: <em>Eat and drink from the provision of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٢٨</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَلْزِمْنِيْ</span> <span class="nm">يَا وَاحِدُ يَا أَحَدُ</span> كَلِمَةَ التَّوْحِيْدِ كَمَا أَلْزَمْتَ حَبِيْبَكَ مُحَمَّدًا صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ حَيْثُ قُلْتَ <span class="qr">﴾فَاعْلَمْ أَنَّهُ لَا إِلَهَ إِلَّا اللهُ﴿</span></div></div>
+        <p class="en">And bind me fast, O One, O Unique, to the word of Divine Oneness, as You bound Your beloved Muḥammad — may Allah bless him and grant him peace — when You said: <em>So know that there is no god but Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٢٩</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَتَوَلَّنِيْ</span> <span class="nm">يَا وَلِيُّ يَا عَلِيُّ</span> بِالْوِلَايَةِ وَالْعِنَايَةِ وَالرِّعَايَةِ وَالسَّلَامَةِ بِمَزِيْدِ إِيْرَادِ إِسْعَادِ إِمْدَادِ <span class="qr">﴾ذٰلِكَ خَيْرٌ﴿</span> <span class="qr">﴾ذٰلِكَ مِنْ فَضْلِ اللهِ﴿</span></div></div>
+        <p class="en">And take me under Your care, O Protecting Friend, O Most High, with guardianship, solicitude, watchfulness, and safety — with an increase of supply, felicity, and reinforcement: <em>That is better</em> — <em>that is from the grace of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٣٠</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَكْرِمْنِيْ</span> <span class="nm">يَا غَنِيُّ يَا كَرِيْمُ</span> بِالسَّعَادَةِ وَالسِّيَادَةِ وَالْكَرَامَةِ وَالْمَغْفِرَةِ كَمَا أَكْرَمْتَ بِهِ <span class="qr">﴾الَّذِيْنَ يَغُضُّوْنَ أَصْوَاتَهُمْ عِنْدَ رَسُوْلِ اللهِ﴿</span></div></div>
+        <p class="en">And ennoble me, O Self-Sufficient, O Generous, with felicity, leadership, honour, and forgiveness — as You ennobled thereby <em>those who lower their voices in the presence of the Messenger of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٣١</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَتُبْ</span> عَلَيَّ <span class="nm">يَا تَوَّابُ يَا حَكِيْمُ</span> تَوْبَةً نَصُوْحًا لِأَكُوْنَ مِنَ <span class="qr">﴾الَّذِيْنَ إِذَا فَعَلُوْا فَاحِشَةً أَوْ ظَلَمُوْا أَنْفُسَهُمْ ذَكَرُوا اللهَ فَاسْتَغْفَرُوْا لِذُنُوْبِهِمْ وَمَنْ يَّغْفِرُ الذُّنُوْبَ إِلَّا اللهُ﴿</span></div></div>
+        <p class="en">And turn to me in acceptance, O Ever-Relenting, O All-Wise, with a sincere repentance, that I may be among <em>those who, when they commit an indecency or wrong themselves, remember Allah and seek forgiveness for their sins — and who forgives sins but Allah?</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٣٢</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَاخْتِمْ</span> لِيْ <span class="nm">يَا رَحْمٰنُ يَا رَحِيْمُ</span> بِحُسْنِ خَاتِمَةِ النَّاجِيْنَ الرَّاجِيْنَ الَّذِيْنَ قِيْلَ لَهُمْ <span class="qr">﴾قُلْ يَا عِبَادِيَ الَّذِيْنَ أَسْرَفُوْا عَلَىٰ أَنْفُسِهِمْ لَا تَقْنَطُوْا مِنْ رَّحْمَةِ اللهِ﴿</span></div></div>
+        <p class="en">And seal for me, O All-Merciful, O Ever-Merciful, a goodly end among the saved and the hopeful — those to whom it was said: <em>Say: O My servants who have transgressed against themselves, do not despair of the mercy of Allah.</em></p>
+      </article>
+      <article class="mv">
+        <div class="ar-row"><div class="marker"><span class="disc">٣٣</span></div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَسْكِنِّيْ</span> <span class="nm">يَا سَمِيْعُ يَا قَرِيْبُ</span> جَنَّةَ عَدْنٍ <span class="qr">﴾أُعِدَّتْ لِلْمُتَّقِيْنَ﴿</span> الَّذِيْنَ <span class="qr">﴾دَعْوَاهُمْ فِيْهَا سُبْحَانَكَ اللَّهُمَّ وَتَحِيَّتُهُمْ فِيْهَا سَلَامٌ وَآخِرُ دَعْوَاهُمْ أَنِ الْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمِيْنَ﴿</span></div></div>
+        <p class="en">And settle me, O All-Hearing, O Ever-Near, in the Gardens of Eden <em>prepared for the God-conscious</em> — those whose <em>call therein is: Glory be to You, O Allah; their greeting therein is: Peace; and the close of their call is: All praise belongs to Allah, Lord of the worlds.</em></p>
+      </article>
+      <div class="divider"><span>۞</span></div>
+      <section class="coda">
+        <div class="invoke" dir="rtl" lang="ar"><div class="line">يَا اللهُ يَا اللهُ يَا اللهُ</div><div class="line">يَا نَافِعُ يَا نَافِعُ يَا نَافِعُ</div><div class="line">يَا رَحْمٰنُ يَا رَحْمٰنُ يَا رَحْمٰنُ</div><div class="line">يَا رَحِيْمُ يَا رَحِيْمُ يَا رَحِيْمُ</div></div>
+        <p class="en">O Allah, O Allah, O Allah • O Bringer of Benefit, thrice • O All-Merciful, thrice • O Ever-Merciful, thrice.</p>
+      </section>
+      <section class="supp">
+        <div class="lbl">Closing Supplication</div>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">أَللّٰهُمَّ</span> وَبِقُدْرَةِ <span class="qr">﴾بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ﴿</span> <span class="pt">اِرْفَعْ</span> قَدْرِيْ، <span class="pt">وَاشْرَحْ</span> صَدْرِيْ، <span class="pt">وَيَسِّرْ</span> أَمْرِيْ، <span class="pt">وَاجْبُرْ</span> كَسْرِيْ، <span class="pt">وَأَطِلْ</span> عُمْرِيْ وَالْعَافِيَةِ، <span class="pt">وَارْزُقْنِيْ</span> مِنْ حَيْثُ لَا أَحْتَسِبُ بِغَيْرِ حِسَابٍ، بِفَضْلِكَ وَإِحْسَانِكَ وَكَرَمِكَ، <span class="nm">يَا هُوْ يَا هُوْ يَا هُوْ</span> <span class="qr">﴾كهيعص﴿</span><span class="qr">﴾حمٓ عسق﴿</span> <span class="pt">أَسْأَلُكَ</span> بِجَمَالِ الْعِزَّةِ وَجَلَالِ الْهَيْبَةِ وَعِزَّةِ الْقُدْرَةِ وَجَبَرُوْتِ الْعَظَمَةِ، أَنْ تَجْعَلَنِيْ مِنْ عِبَادِكَ الصَّالِحِيْنَ الَّذِيْنَ <span class="qr">﴾لَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُوْنَ﴿</span></div>
+        <p class="en">O Allah, by the power of <em>“In the Name of Allah, the All-Merciful, the Ever-Merciful”</em>: raise my rank, expand my breast, ease my affair, mend what is broken in me, prolong my life in well-being, and provide for me from where I do not reckon, without measure — by Your grace, Your beneficence, and Your generosity. O He, O He, O He — <em>Kāf Hā Yā ʿAyn Ṣād · Ḥā Mīm ʿAyn Sīn Qāf.</em> I ask You, by the beauty of might, the majesty of awe, the might of power, and the omnipotence of magnificence, to make me among Your righteous servants — <em>those upon whom there is no fear, nor shall they grieve.</em></p>
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">وَأَسْأَلُكَ</span> <span class="pt">اللَّهُمَّ</span> بِحُرْمَةِ هَذِهِ الْأَسْمَآءِ وَالْآيَاتِ وَالْكَلِمَاتِ، أَنْ تَجْعَلَ لِيْ <span class="qr">﴾مِنْ لَدُنْكَ سُلْطَانًا نَّصِيْرًا﴿</span> وَّرِزْقًا كَثِيْرًا وَّاسِعًا، وَّقَلْبًا قَرِيْرًا، وَّعِلْمًا غَزِيْرًا، وَّعَمَلًا وَّعَمَلًا بَرِيْرًا، وَّقَبْرًا مُّنِيْرًا، وَّحِسَابًا يَّسِيْرًا، وَّمُلْكًا فِيْ جَنَّةِ الْفِرْدَوْسِ كَبِيْرًا</div>
+        <p class="en">And I ask You, O Allah, by the sanctity of these Names, signs, and words, to grant me <em>from Yourself a helping authority</em>, and provision abundant and ample, a heart at peace, knowledge overflowing, deeds — and righteous deeds, an illumined grave, an easy reckoning, and a vast dominion in the Garden of Firdaws.</p>
+      </section>
+      <section class="supp">
+        <div class="lbl">Closing Supplication</div>
+        <div class="ar" dir="rtl" lang="ar">وَصَلَّى اللهُ عَلَىٰ سَيِّدِنَا وَمَوْلَانَا مُحَمَّدٍ الَّذِيْ أَرْسَلْتَهُ بِالْحَقِّ بَشِيْرًا وَّنَذِيْرًا، وَعَلَىٰ آلِهِ وَأَصْحَابِهِ الَّذِيْنَ طَهَّرْتَهُمْ مِنَ الدَّنَسِ تَطْهِيْرًا، وَسَلَّمَ تَسْلِيْمًا كَثِيْرًا طَيِّبًا مُبَارَكًا كَافِيًا جَزِيْلًا جَمِيْلًا دَائِمًا بِدَوَامِ مُلْكِ اللهِ، وَبِقُدْرَةِ عَظَمَةِ ذَاتِكَ <span class="nm">يَا أَرْحَمَ الرَّاحِمِيْنَ</span> <span class="qr">﴾سُبْحَانَ رَبِّكَ رَبِّ الْعِزَّةِ عَمَّا يَصِفُوْنَ وَسَلَامٌ عَلَى الْمُرْسَلِيْنَ وَالْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمِيْنَ﴿</span></div>
+        <p class="en">And may Allah bless our master and patron Muḥammad, whom You sent with the truth as a bearer of glad tidings and a warner, and his Family and Companions whom You purified from all defilement with a thorough purification; and may He grant peace — abundant, wholesome, blessed, sufficing, ample, beautiful, and everlasting, for as long as the dominion of Allah endures — by the power of the magnificence of Your Essence, O Most Merciful of the merciful: <em>Glory be to your Lord, the Lord of might, above what they ascribe; and peace be upon the messengers; and all praise belongs to Allah, Lord of the worlds.</em></p>
+      </section>
+      <section class="coda seal">
+        <div class="ar" dir="rtl" lang="ar"><span class="pt">اللَّهُمَّ</span> صَلِّ وَسَلِّمْ عَلَىٰ نَبِيِّنَا وَسَيِّدِنَا مُحَمَّدٍ وَّعَلَىٰ آلِهِ وَأَصْحَابِهِ أَجْمَعِيْنَ وَالْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمِيْنَ</div>
+        <p class="en">O Allah, bless and grant peace to our Prophet and master Muḥammad, and to all his Family and Companions; and all praise belongs to Allah, Lord of the worlds.</p>
+      </section>
+  </section>
+
+  <footer class="colophon">
+    <div class="divider"><span>۞</span></div>
+    <p class="fatiha">Please recite Sūrat al-Fātiḥa for the Prophet Muḥammad ﷺ and his Family, and for Shaykh Ibn al-ʿArabī (q).</p>
+    <p class="src">A mobile-friendly khidma · <b>DhikrNotes</b></p>
+    <p class="links">t.me/DhikrNotes · youtube.com/princeamori</p>
+  </footer>
+</main>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+ "note": "Real recitation only (Al's decision 2, 2026-11-16). Key = verse key s:a (or s:a-b). Each entry: asset url in this artifact's asset store, reciter, source, licence, and for Names the verse and time range that contains the Name. No synthetic voice for any Arabic.",
+ "defaults": {
+  "reciter": "Alafasy_128kbps",
+  "teaching_pace": "Husary_128kbps"
+ },
+ "sources": {
+  "everyayah": {
+   "url": "https://everyayah.com/data/<Reciter>/SSSAAA.mp3",
+   "licence": "free to use and redistribute for non-commercial Islamic purposes, per everyayah.com"
+  },
+  "islamic.network": {
+   "url": "https://cdn.islamic.network/quran/audio/<bitrate>/<edition>/<ayah>.mp3",
+   "licence": "free, per alquran.cloud / islamic.network terms"
+  },
+  "iḥyāʾ-engine-assets": {
+   "url": "https://claude.ai/artifact/LzY1UDQcRpVCyVka6iXeZH (asset store; index quran/recit.json)",
+   "licence": "copies of everyayah.com recitations (Alafasy, Husary, Minshawy murattal), per-sūra with āya offsets"
+  }
+ },
+ "verses": {},
+ "names": {},
+ "recorded_by_al": {},
+ "teacher_pronunciations": {},
+ "recitation_in_this_engine": {
+  "index": "quran/recit.json",
+  "copied": "2026-11-22",
+  "alafasy": "all 114 parts (asset store)",
+  "husary": "all 115 parts (asset store, copied 2026-11-23)",
+  "minshawi": "all 114 parts (asset store, copied 2026-11-23)",
+  "player": "ihya/quran.js window.QRAudio.play(s, from, to)"
+ },
+ "not_used": {
+  "ihya voice/ar/*": "synthetic speech of Names and phrases — excluded by decision 1"
+ }
+}
